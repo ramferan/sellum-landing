@@ -1,0 +1,19 @@
+{
+  "trailingSlash": true,
+  "rewrites": [
+    { "source": "/es/", "destination": "/es/index.html" },
+    { "source": "/es", "destination": "/es/index.html" },
+    { "source": "/pt/", "destination": "/pt/index.html" },
+    { "source": "/pt", "destination": "/pt/index.html" },
+    { "source": "/fr/", "destination": "/fr/index.html" },
+    { "source": "/fr", "destination": "/fr/index.html" },
+    { "source": "/kalosnap/en/", "destination": "/kalosnap/en/index.html" },
+    { "source": "/kalosnap/en", "destination": "/kalosnap/en/index.html" },
+    { "source": "/kalosnap/es/", "destination": "/kalosnap/es/index.html" },
+    { "source": "/kalosnap/es", "destination": "/kalosnap/es/index.html" },
+    { "source": "/kalosnap/pt/", "destination": "/kalosnap/pt/index.html" },
+    { "source": "/kalosnap/pt", "destination": "/kalosnap/pt/index.html" },
+    { "source": "/kalosnap/fr/", "destination": "/kalosnap/fr/index.html" },
+    { "source": "/kalosnap/fr", "destination": "/kalosnap/fr/index.html" }
+  ]
+}

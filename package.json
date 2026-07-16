@@ -1,0 +1,10 @@
+{
+  "name": "sellum-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing pages for SELLUM Labs and KaloSnap",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  }
+}
