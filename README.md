@@ -6,36 +6,35 @@ Brand umbrella landing pages for the SELLUM ecosystem.
 
 ```
 selllum-landing/
-├── sellum/          → sellum.com (brand umbrella)
-│   └── index.html
-├── kalosnap/        → kalosnap.sellum.com (product landing)
-│   └── index.html
+├── index.html        → sellum.com (brand umbrella)
+├── kalosnap/
+│   └── index.html    → kalosnap.sellum.com (product landing)
 ├── README.md
 └── .gitignore
 ```
 
 ## Subdomains
 
-| Domain | Content | Status |
-|--------|---------|--------|
-| `selllum.com` | Brand umbrella — SELLUM Software Studio | ✅ Generated |
-| `kalosnap.sellum.com` | KaloSnap product landing page | ✅ Generated |
-| `app.kalosnap.sellum.com` | KaloSnap app (PWA) | Separate repo |
+| Domain | Content | Vercel Project | Root Directory |
+|--------|---------|---------------|----------------|
+| `selllum.com` | SELLUM brand umbrella | `selllum` | `/` |
+| `kalosnap.sellum.com` | KaloSnap product landing | `kalosnap-landing` | `/kalosnap` |
 
 ## Tech
 
 - Static HTML + Tailwind CSS (via CDN)
-- Google Fonts: Playfair Display + Inter
-- Design System: Boutique Editorial (flat, monochrome, generous whitespace)
+- Google Fonts: Playfair Display + Inter / Hanken Grotesk
+- Design System: Boutique Editorial (flat, monochrome, generous whitespace, no border-radius)
 
 ## Deploy
 
-Deploy `selllum.com` → `/sellum/index.html`
-Deploy `kalosnap.sellum.com` → `/kalosnap/index.html`
+1. Push to GitHub
+2. In Vercel, create two projects pointing to the same repo
+3. Configure domains
 
 ## Stitch Projects
 
-| Project | Stitch ID | Type |
-|---------|-----------|------|
-| SELLUM Brand | `projects/10578458468226158438` | DESKTOP |
-| KaloSnap Landing | `projects/981755789825309577` | DESKTOP |
+| Project | Stitch ID |
+|---------|-----------|
+| SELLUM Brand | `projects/10578458468226158438` |
+| KaloSnap Landing | `projects/981755789825309577` |

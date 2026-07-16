@@ -1,28 +1,314 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SELLUM | Software Studio</title>
-  <meta http-equiv="refresh" content="0; url=/sellum/">
-  <link rel="canonical" href="https://selllum.com/sellum/">
-  <style>
-    body {
-      margin: 0;
-      padding: 2rem;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #faf9f6;
-      color: #1a1a1a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-    }
-    a { color: inherit; }
-  </style>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SELLUM | Software Studio</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Playfair Display for Serif, Hanken Grotesk for Sans-Serif -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dadada",
+                    "secondary-container": "#dfe0e0",
+                    "surface-container-highest": "#e2e2e2",
+                    "surface-bright": "#f9f9f9",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "on-primary-fixed": "#1b1b1b",
+                    "inverse-primary": "#c6c6c6",
+                    "inverse-surface": "#2f3131",
+                    "surface-container-high": "#e8e8e8",
+                    "on-secondary-fixed-variant": "#454747",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "background": "#f9f9f9",
+                    "inverse-on-surface": "#f1f1f1",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#616363",
+                    "on-background": "#1a1c1c",
+                    "surface-variant": "#e2e2e2",
+                    "primary": "#000000",
+                    "secondary": "#5d5f5f",
+                    "primary-fixed": "#e2e2e2",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#848484",
+                    "on-surface-variant": "#4c4546",
+                    "surface-container-low": "#f4f3f3",
+                    "outline": "#7e7576",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "on-surface": "#1a1c1c",
+                    "on-tertiary-container": "#848484",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-tint": "#5e5e5e",
+                    "on-primary-fixed-variant": "#474747",
+                    "tertiary": "#000000",
+                    "secondary-fixed": "#e2e2e2",
+                    "tertiary-fixed": "#e4e2e2",
+                    "outline-variant": "#cfc4c5",
+                    "on-error": "#ffffff",
+                    "primary-container": "#1b1b1b",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "tertiary-container": "#1b1c1c",
+                    "surface-container": "#eeeeee",
+                    "surface": "#f9f9f9",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "stack-md": "40px",
+                    "stack-lg": "80px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "stack-xl": "120px",
+                    "margin-mobile": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "label-md": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Playfair Display"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                    "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["48px", {"lineHeight": "52px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #000000;
+            -webkit-font-smoothing: antialiased;
+        }
+        .editorial-border {
+            border: 1px solid #E5E5E5;
+        }
+        .hover-lift {
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+        }
+    </style>
 </head>
-<body>
-  <p>Redirecting to <a href="/sellum/">SELLUM</a>…</p>
-</body>
-</html>
+<body class="font-body-md text-on-background">
+<!-- TopNavBar Component -->
+<header class="w-full top-0 border-b border-surface-variant dark:border-on-tertiary-fixed-variant bg-background dark:bg-background z-50 sticky">
+<nav class="flex justify-between items-center px-margin-desktop py-unit max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md font-bold text-primary dark:text-on-primary-fixed cursor-pointer">
+                SELLUM
+            </div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-label-caps text-label-caps cursor-pointer hover:text-primary dark:hover:text-on-primary-fixed transition-colors duration-200 text-secondary dark:text-secondary-fixed-dim" href="#">KaloSnap</a>
+<a class="font-label-caps text-label-caps cursor-pointer hover:text-primary dark:hover:text-on-primary-fixed transition-colors duration-200 text-secondary dark:text-secondary-fixed-dim" href="#">SOMA</a>
+<a class="font-label-caps text-label-caps cursor-pointer hover:text-primary dark:hover:text-on-primary-fixed transition-colors duration-200 text-secondary dark:text-secondary-fixed-dim" href="#">Belleza</a>
+<a class="font-label-caps text-label-caps cursor-pointer hover:text-primary dark:hover:text-on-primary-fixed transition-colors duration-200 text-secondary dark:text-secondary-fixed-dim" href="#">Compliance AI</a>
+<a class="font-label-caps text-label-caps cursor-pointer hover:text-primary dark:hover:text-on-primary-fixed transition-colors duration-200 text-secondary dark:text-secondary-fixed-dim" href="#">Sendify</a>
+<a class="font-label-caps text-label-caps cursor-pointer hover:text-primary dark:hover:text-on-primary-fixed transition-colors duration-200 text-secondary dark:text-secondary-fixed-dim" href="#">Pachanga</a>
+</div>
+<button class="font-label-caps text-label-caps text-primary cursor-pointer hover:underline border border-primary px-4 py-2">
+                Contact
+            </button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-xl">
+<div class="max-w-4xl">
+<span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">SOFTWARE STUDIO</span>
+<h1 class="font-display-lg text-display-lg md:text-[120px] md:leading-[110px] text-primary mb-stack-md">
+                    SELLUM
+                </h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl leading-relaxed">
+                    Crafting minimalist tools for complex ecosystems. We design and build high-performance software architecture that prioritizes structural integrity, clarity, and the rhythmic use of functional space.
+                </p>
+</div>
+</section>
+<!-- Product Grid Section -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-lg border-t border-surface-variant">
+<div class="mb-stack-md flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg text-primary">Portfolio</h2>
+<span class="font-label-caps text-label-caps text-secondary">PROJECTS 01-06</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1: KaloSnap -->
+<div class="editorial-border bg-white flex flex-col p-stack-md hover-lift">
+<div class="aspect-[4/3] bg-surface-container-low mb-6 overflow-hidden">
+<img class="w-full h-full object-cover grayscale" data-alt="A clean, high-fashion editorial photograph of a minimalist breakfast scene on a white marble table. The composition is highly structured and architectural, with deep blacks and sharp highlights creating a sophisticated, light-mode aesthetic. A single glass of water and a white plate are positioned according to a strict grid, embodying nutritional intelligence and modern visual restraint." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq-SByEVUs2JRckKD0s-8EIdOpoB1GxTAD3vPzBnNTlOcECfSBb1KnCpyTTDroRELTNdyrefDwNPU8pgbaVJnS5wNg-LRPuh261YFYe9ZmIEgeiptoJ8CbsPe8J3sBu7tCFz75twd2bZm8LlW5OgTMNj8deeY5KO5oIaJoFyS03BjXq5PAe87Gkzpu958c-DPNZ_YWzGrnmd4D0mrxsjcPeRIoxnljLm3iUqOpOcvY1IgzrKrCl4c3VtWhGkXtGQbfZtemrL6eDGtT"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">KaloSnap</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Nutritional intelligence through advanced computer vision and real-time data analysis.</p>
+</div>
+<a class="group inline-flex items-center gap-2 font-label-caps text-label-caps text-primary" href="#">
+                        EXPLORE 
+                        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Card 2: SOMA -->
+<div class="editorial-border bg-white flex flex-col p-stack-md hover-lift">
+<div class="aspect-[4/3] bg-surface-container-low mb-6 overflow-hidden">
+<img class="w-full h-full object-cover grayscale" data-alt="An abstract architectural shot of a brutalist concrete building with sharp, geometric lines cutting against a pale gray sky. The monochromatic palette of blacks, whites, and greys emphasizes structural orchestration and enterprise-level stability. The mood is powerful and calm, reflecting an AI platform built with extreme precision and sophisticated technical authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKzV6wZQJwvBeL5i7pgsNrJ7E7ZzRKWyPlVv3-axSYAnsuCAXYwD_e2HavhVYUT6OgadkXRhbpOIX9IGve64-idvnfCofhcyCia0OWS77D0siSLgem9p0XmlmB5K7kulcHTXEZvrJor78UyuFxxNSChGQFxsOAPmrLcZ2cFqUu22vMqHcCCLY45j9_ms7iYW_oxR0agb7r9NaxVzY6yYy5UPZiqatT5RJx68cdy0PyIBhEh3BJReRZx48WXXCaXOUL0404jnWvoRHT"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">SOMA</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Unified AI platform for complex enterprise orchestration and automated decision logic.</p>
+</div>
+<a class="group inline-flex items-center gap-2 font-label-caps text-label-caps text-primary" href="#">
+                        EXPLORE 
+                        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Card 3: Belleza a Diario -->
+<div class="editorial-border bg-white flex flex-col p-stack-md hover-lift">
+<div class="aspect-[4/3] bg-surface-container-low mb-6 overflow-hidden">
+<img class="w-full h-full object-cover grayscale" data-alt="A high-end cosmetic still life featuring a single sculptural perfume bottle and an open magazine page. The aesthetic is purely editorial, inspired by minimalist fashion journals, using stark white space and deep black shadows. The lighting is sharp and intentional, conveying a sense of curated beauty and rigorous aesthetic standards in a modern digital space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC2_qpeMhAaL-udmIwrNlruBN_1csjpS1vf83Tf027orax3WGGL5STCDbtO1sFkCd_iVD2Sxz8RnaaPXEPPEO_xVnPTIt0pLdfcm6n3IKLGnueBlWAFhIZYsnPrrK7bsR5B2WNC3azUadonJ_xOEcOT0MFlK_EwpBTm9T0re6277TfBsE_EGLOlYBHCmb73LdpdvfRYVl4jWY25Mh9kXuqUs7NUQEkTnb-ezBOyblhqwfWV4rQ04Lh2zTcXAHr41VFL-Bghq48FfFM"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Belleza a Diario</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Curated beauty content delivered with the rigor and aesthetic of high-end editorial publishing.</p>
+</div>
+<a class="group inline-flex items-center gap-2 font-label-caps text-label-caps text-primary" href="#">
+                        EXPLORE 
+                        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Card 4: Compliance AI -->
+<div class="editorial-border bg-white flex flex-col p-stack-md hover-lift">
+<div class="aspect-[4/3] bg-surface-container-low mb-6 overflow-hidden">
+<img class="w-full h-full object-cover grayscale" data-alt="A macro photograph of stacked legal documents or architectural blueprints with perfectly aligned edges. The focus is sharp on the structural layering of the paper, representing automated regulatory oversight. The color scheme is a minimalist black and white, projecting a sense of security, authority, and meticulous digital governance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvPLfbVV9bo1WUbIY5T1XDzN6dREHzx7m3o-PYmPjiHS7xI6xKnglBA9qHq_c7sY8l6GROMdM43F9CIZu7bCPM35Qbx4-JLG5YlQS9QIew2wMkNTd1aM4EwuyYEaGmveCwDClaZljJHhEqt9O94JtBUfoWzSED-MJfU1pf5jOzjbw19oMNYhl4ybTtDsBZTmwZKcWh4tr-k5026wGO-viLKgmLGzsqaTCVEvSE1ZasMrep-RY4o08MIpe0vxQc9wjQP1dcQPuOOMSg"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Compliance AI</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Automated regulatory oversight systems designed for frictionless legal integration.</p>
+</div>
+<a class="group inline-flex items-center gap-2 font-label-caps text-label-caps text-primary" href="#">
+                        EXPLORE 
+                        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Card 5: Sendify -->
+<div class="editorial-border bg-white flex flex-col p-stack-md hover-lift">
+<div class="aspect-[4/3] bg-surface-container-low mb-6 overflow-hidden">
+<img class="w-full h-full object-cover grayscale" data-alt="A minimalist long-exposure shot of a bridge or highway infrastructure at twilight, where streaks of light form perfectly straight architectural lines. The image symbolizes messaging infrastructure and modern scale, using a high-contrast monochromatic style. The atmosphere is one of speed, reliability, and sophisticated technological connectivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQwTOfWZs4tQrB7GzCgNeMtnFnNqOHlcLChRoO2Xg3pIDTDMFOIARk9rWOujn9GMvYv5zRr32dttqGQs1G_a2ySy7Fu4uZ93vnQzJG8eCu60zK96PHP0edtvBsC0tYZwRHBnnIc4IKOJStulLkpQwxsjP5HmtOcIXvKxgSMHLXuvvgFpolZary7hpctYhyrZ2J5Sopy6WSiSbT164Z7DjnUWpGEmyWvmRPGQNVs4ZvUaoZZXsFgp5qYldxHah_4CEy3dtsVW6SAuyW"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Sendify</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Robust messaging infrastructure engineered for modern scale and high-frequency delivery.</p>
+</div>
+<a class="group inline-flex items-center gap-2 font-label-caps text-label-caps text-primary" href="#">
+                        EXPLORE 
+                        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<!-- Card 6: Pachanga Pay -->
+<div class="editorial-border bg-white flex flex-col p-stack-md hover-lift">
+<div class="aspect-[4/3] bg-surface-container-low mb-6 overflow-hidden">
+<img class="w-full h-full object-cover grayscale" data-alt="A minimalist overhead shot of a modern artisan's hands working on a drafting table. The scene captures the essence of frictionless transaction and human-centric design in emerging markets. The lighting is natural and bright, maintaining the studio's signature high-contrast black and white editorial style while suggesting approachability and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7qPU0XhMkroFaRbzKIPWJCl2bqN4F6_Ve7ttKpS-rDK6r_tYHEF_-gWQ3kQNWDUGQx8EkY3Kn52tNwGxxRXem6Svvr9zgLLGlXKS2R0uIPscL54eRDBTC3Zeb_LRKIc7Hh8zL9ECC1q3OUf3WzJxMugcnst00Lh4NEqEzBMdjkndSWsvbm39XJgK1QYMm54r9MZZKzJJ5A-8vmCYD5ID31rqW5_4C1vR83JEF0UPyGf0W9fWLsURuKck4cJBpNg___oaEFufhgJK_"/>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Pachanga Pay</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Frictionless payment solutions engineered specifically for emerging market dynamics.</p>
+</div>
+<a class="group inline-flex items-center gap-2 font-label-caps text-label-caps text-primary" href="#">
+                        EXPLORE 
+                        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Newsletter / Contact Teaser -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-xl">
+<div class="bg-primary text-on-primary p-stack-lg flex flex-col md:flex-row items-center justify-between gap-stack-md">
+<div class="max-w-xl">
+<h2 class="font-display-lg text-headline-lg text-on-primary mb-4 uppercase">Inquiry</h2>
+<p class="font-body-lg text-body-lg text-surface-container-highest">Have a complex ecosystem that requires a minimalist solution? Connect with our studio for partnership opportunities.</p>
+</div>
+<button class="bg-white text-black px-12 py-4 font-label-caps text-label-caps hover:bg-surface-variant transition-colors">
+                    START DIALOGUE
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full border-t border-surface-variant dark:border-on-tertiary-fixed-variant bg-background dark:bg-background">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-md max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md text-primary mb-4 md:mb-0">
+                SELLUM
+            </div>
+<div class="flex flex-wrap justify-center gap-gutter font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
+<a class="hover:underline cursor-pointer" href="#">Privacy Policy</a>
+<a class="hover:underline cursor-pointer" href="#">Terms of Service</a>
+<a class="hover:underline cursor-pointer" href="#">LinkedIn</a>
+<a class="hover:underline cursor-pointer" href="#">Email</a>
+</div>
+<div class="mt-8 md:mt-0 font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim opacity-60">
+                © 2024 SELLUM Software Studio. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        // Simple scroll animation for headers
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'ease-out', 'translate-y-4', 'opacity-0');
+            observer.observe(section);
+        });
+
+        // Trigger immediate show for hero
+        setTimeout(() => {
+            const hero = document.querySelector('section');
+            if (hero) {
+                hero.classList.remove('translate-y-4', 'opacity-0');
+                hero.classList.add('opacity-100');
+            }
+        }, 100);
+    </script>
+</body></html>
