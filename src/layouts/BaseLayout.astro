@@ -16,7 +16,9 @@ const isSellum = variant === 'sellum';
 const fontsLink = isSellum
   ? 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'
   : 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap';
-const hreflangPaths = { en: isSellum ? '/' : '/en/', es: isSellum ? '/es/' : '/', pt: isSellum ? '/pt/' : '/pt/', fr: isSellum ? '/fr/' : '/fr/' };
+const sellumPaths = { en: '/en/', es: '/', pt: '/pt/', fr: '/fr/' };
+const kalosnapPaths = { en: '/kalosnap/en/', es: '/kalosnap/', pt: '/kalosnap/pt/', fr: '/kalosnap/fr/' };
+const hreflangPaths = isSellum ? sellumPaths : kalosnapPaths;
 const pagePath = Astro.url.pathname.replace(/\/$/, '');
 const isLegalPage = pagePath.startsWith('/privacy') || pagePath.startsWith('/terms');
 const baseHreflang = isLegalPage ? pagePath : '';

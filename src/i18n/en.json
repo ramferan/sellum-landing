@@ -12,7 +12,7 @@
     { "name": "Uptime Pyme", "desc": "Real-time conversion monitoring that alerts you via WhatsApp when your critical business flows go down.", "url": "#" }
   ],
   "contact": { "title": "Inquiry", "description": "Have a complex ecosystem that requires a minimalist solution? Connect with our studio for partnership opportunities.", "name_placeholder": "Your Name", "email_placeholder": "Your Email", "message_placeholder": "Tell us about your project", "submit": "SEND MESSAGE" },
-  "footer": { "privacy": "Privacy Policy", "terms": "Terms of Service", "email": "Email", "copyright": "SELLUM Software Studio. All rights reserved." },
+  "footer": { "privacy": "Privacy Policy", "terms": "Terms of Service", "email": "Email", "copyright": "All rights reserved." },
   "privacy": { "title": "Privacy Policy", "updated": "Last updated: July 17, 2026" },
   "terms": { "title": "Terms of Service", "updated": "Last updated: July 17, 2026" },
   "kalosnap": {

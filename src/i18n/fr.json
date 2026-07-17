@@ -12,7 +12,7 @@
     { "name": "Uptime Pyme", "desc": "Surveillance de conversion en temps réel qui vous alerte via WhatsApp lorsque vos flux critiques échouent.", "url": "#" }
   ],
   "contact": { "title": "Contact", "description": "Vous avez un écosystème complexe qui nécessite une solution minimaliste? Contactez notre studio pour des opportunités de partenariat.", "name_placeholder": "Votre Nom", "email_placeholder": "Votre Email", "message_placeholder": "Parlez-nous de votre projet", "submit": "ENVOYER LE MESSAGE" },
-  "footer": { "privacy": "Politique de Confidentialité", "terms": "Conditions d'Utilisation", "email": "Email", "copyright": "SELLUM Software Studio. Tous droits réservés." },
+  "footer": { "privacy": "Politique de Confidentialité", "terms": "Conditions d'Utilisation", "email": "Email", "copyright": "Tous droits réservés." },
   "privacy": { "title": "Politique de Confidentialité", "updated": "Dernière mise à jour : 17 juillet 2026" },
   "terms": { "title": "Conditions d'Utilisation", "updated": "Dernière mise à jour : 17 juillet 2026" },
   "kalosnap": {

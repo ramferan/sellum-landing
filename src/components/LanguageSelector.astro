@@ -7,8 +7,8 @@ const { lang, variant = 'sellum' } = Astro.props;
 const langs = ['en', 'es', 'pt', 'fr'];
 const labels: Record<string, string> = { en: 'EN', es: 'ES', pt: 'PT', fr: 'FR' };
 const paths: Record<string, Record<string, string>> = {
-  sellum: { en: '/', es: '/es/', pt: '/pt/', fr: '/fr/' },
-  kalosnap: { en: '/en/', es: '/', pt: '/pt/', fr: '/fr/' },
+  sellum: { en: '/en/', es: '/', pt: '/pt/', fr: '/fr/' },
+  kalosnap: { en: '/kalosnap/en/', es: '/kalosnap/', pt: '/kalosnap/pt/', fr: '/kalosnap/fr/' },
 };
 const basePath = paths[variant];
 const cls = variant === 'kalosnap' ? 'font-label-md text-label-md' : 'font-label-caps text-label-caps text-xs';
@@ -37,9 +37,13 @@ document.querySelectorAll('[hreflang]').forEach(function(el) {
   if (stored) {
     var current = document.documentElement.lang;
     if (stored !== current) {
-      var m = { en: '/en/', es: '/', pt: '/pt/', fr: '/fr/' };
+      var isK = window.location.pathname.indexOf('/kalosnap') === 0;
+      var sellum = { en: '/en/', es: '/', pt: '/pt/', fr: '/fr/' };
+      var kalosnap = { en: '/kalosnap/en/', es: '/kalosnap/', pt: '/kalosnap/pt/', fr: '/kalosnap/fr/' };
+      var m = isK ? kalosnap : sellum;
       window.location.href = m[stored] || '/';
     }
   }
 })();
 </script>
+
