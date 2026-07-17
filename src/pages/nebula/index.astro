@@ -1,5 +1,64 @@
 ---
 const year = 2026;
+const appUrl = 'https://app.sellumlabs.com/nebula';
+const features = [
+  {
+    icon: 'neurology',
+    title: 'Neural Projections',
+    desc: 'Arquitectura LSTM-64 con Conformal Prediction (MAPIE) para intervalos de confianza calibrados. Predicciones semanales con meta-validación XGBoost.',
+    metric: 'Certainty: 87.3%',
+    metric2: 'Sharpe: 1.84'
+  },
+  {
+    icon: 'travel_explore',
+    title: 'Macro Regime Filter',
+    desc: 'Análisis multi-factor: curva de rendimiento (Bund alemán), credit spreads (HY-IG), VIX y liquidez interbancaria. Filtrado de régimen para evitar mercados adversos.',
+    metric: 'Regime: EXPANSION',
+    metric2: 'VIX: 14.2'
+  },
+  {
+    icon: 'verified',
+    title: 'Compliance Engine',
+    desc: 'Automatización de la regla fiscal española de 2 meses y filtros ESG. Sistema de protección que bloquea operaciones si el activo está en período de restricción fiscal.',
+    metric: 'Status: CLEAR',
+    metric2: 'Blocks: 12'
+  }
+];
+const metrics = [
+  { label: 'SHARPE RATIO', value: '1.84', sub: 'vs 0.95 benchmark', color: 'text-primary' },
+  { label: 'WIN RATE', value: '68%', sub: '+12% vs buy & hold', color: 'text-success' },
+  { label: 'MAX DRAWDOWN', value: '-12.4%', sub: 'vs -18.7% market', color: 'text-danger' },
+  { label: 'STRATEGY ALPHA', value: '+8.6%', sub: 'anualizado', color: 'text-success' },
+  { label: 'EXPECTANCIA', value: '2.41', sub: 'ratio ganancia/pérdida', color: 'text-primary' },
+  { label: 'OPERACIONES', value: '847', sub: 'totales backtest 12m', color: 'text-primary' },
+  { label: 'EXPOSICIÓN', value: '62%', sub: 'tiempo en mercado', color: 'text-primary' },
+  { label: 'CALMAR RATIO', value: '2.03', sub: 'retorno / drawdown', color: 'text-warning' }
+];
+const pipeline = [
+  { id: '01', title: 'Data Ingestion', desc: 'Alpaca / Tiingo / Yahoo Finance\nFRED (macroeconómico)\n15+ fuentes en tiempo real' },
+  { id: '02', title: 'LSTM Engine', desc: 'Arquitectura LSTM-64\nConformal Prediction (MAPIE)\nVentana de 252 sesiones' },
+  { id: '03', title: 'Meta-Classifier', desc: 'XGBoost validator\nRégimen macro (yield curve, VIX)\nFiltro de riesgo sistémico' },
+  { id: '04', title: 'Compliance', desc: 'Regla fiscal 2 meses (España)\nFiltros ESG\nGestión de restricciones' },
+  { id: '05', title: 'Signal Output', desc: 'Señal UP / DOWN / HOLD\nStop loss dinámico (ATR)\nAlertas vía dashboard' }
+];
+const markets = [
+  { region: 'NA', label: 'Norteamérica', tickers: [
+    { t: 'SPY', s: 'UP', v: '+3.2%' }, { t: 'QQQ', s: 'UP', v: '+5.1%' },
+    { t: 'NVDA', s: 'HOLD', v: '-1.2%' }, { t: 'AAPL', s: 'UP', v: '+2.8%' },
+    { t: 'TSLA', s: 'DOWN', v: '-4.3%' }
+  ]},
+  { region: 'EU', label: 'Europa', tickers: [
+    { t: 'SAP.DE', s: 'UP', v: '+2.1%' }, { t: 'ASML.AS', s: 'HOLD', v: '+0.5%' },
+    { t: 'MC.PA', s: 'DOWN', v: '-1.8%' }, { t: 'OR.PA', s: 'UP', v: '+1.4%' },
+    { t: 'NESN.SW', s: 'HOLD', v: '-0.3%' }
+  ]},
+  { region: 'IB', label: 'IBEX 35', tickers: [
+    { t: 'SAN.MC', s: 'UP', v: '+4.2%' }, { t: 'BBVA.MC', s: 'UP', v: '+3.7%' },
+    { t: 'ITX.MC', s: 'HOLD', v: '-0.8%' }, { t: 'TEF.MC', s: 'DOWN', v: '-2.1%' }
+  ]}
+];
+const signalColor = { 'UP': 'text-success', 'DOWN': 'text-danger', 'HOLD': 'text-secondary' };
+const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
 ---
 <!DOCTYPE html>
 <html class="light" lang="es">
@@ -8,41 +67,272 @@ const year = 2026;
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Nebula — Trading Intelligence</title>
 <meta name="description" content="Señales de trading semanales impulsadas por Deep Learning LSTM y análisis macro."/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script>tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#dadada","surface-bright":"#f9f9f9","background":"#f9f9f9","on-background":"#1a1c1c","surface-variant":"#e2e2e2","primary":"#000000","secondary":"#5d5f5f","on-primary":"#ffffff","on-secondary":"#ffffff","outline":"#7e7576","surface":"#f9f9f9","on-surface":"#1a1c1c"},"borderRadius":{"DEFAULT":"0px","lg":"0px","xl":"0px","full":"9999px"},"spacing":{"margin-desktop":"64px","stack-md":"40px","gutter":"24px","unit":"8px","margin-mobile":"24px","container-max":"1280px"},"fontFamily":{"headline-lg":["Playfair Display"],"body-md":["Hanken Grotesk"],"body-lg":["Hanken Grotesk"],"label-caps":["Hanken Grotesk"],"display-lg":["Playfair Display"],"headline-md":["Playfair Display"]},"fontSize":{"headline-lg":["40px",{"lineHeight":"48px","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-caps":["12px",{"lineHeight":"16px","letterSpacing":"0.1em","fontWeight":"600"}],"display-lg":["72px",{"lineHeight":"80px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["24px",{"lineHeight":"32px","fontWeight":"500"}]}}}}</script>
-<style>body{background-color:#f9f9f9;color:#000;-webkit-font-smoothing:antialiased}.editorial-border{border:1px solid #E5E5E5}</style>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "surface-dim": "#dadada",
+          "surface-bright": "#f9f9f9",
+          "background": "#f9f9f9",
+          "on-background": "#1a1c1c",
+          "surface-variant": "#e2e2e2",
+          "primary": "#000000",
+          "secondary": "#5d5f5f",
+          "on-primary": "#ffffff",
+          "on-secondary": "#ffffff",
+          "outline": "#7e7576",
+          "surface": "#f9f9f9",
+          "on-surface": "#1a1c1c",
+          "success": "#10b981",
+          "danger": "#f43f5e",
+          "warning": "#FEB019",
+          "teal": "#0ea5a0"
+        },
+        borderRadius: { DEFAULT: "0px", lg: "0px", xl: "0px", full: "9999px" },
+        spacing: {
+          "margin-desktop": "64px", "margin-mobile": "24px",
+          "stack-md": "40px", "stack-lg": "80px", "stack-xl": "120px",
+          "gutter": "24px", "unit": "8px", "container-max": "1280px"
+        },
+        fontFamily: {
+          "headline-lg": ["Playfair Display", "serif"],
+          "body-md": ["Hanken Grotesk", "sans-serif"],
+          "body-lg": ["Hanken Grotesk", "sans-serif"],
+          "label-caps": ["Hanken Grotesk", "sans-serif"],
+          "display-lg": ["Playfair Display", "serif"],
+          "headline-md": ["Playfair Display", "serif"],
+          "mono": ["JetBrains Mono", "monospace"]
+        },
+        fontSize: {
+          "headline-lg": ["40px", {lineHeight: "48px", fontWeight: "600"}],
+          "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}],
+          "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}],
+          "label-caps": ["12px", {lineHeight: "16px", letterSpacing: "0.1em", fontWeight: "600"}],
+          "display-lg": ["72px", {lineHeight: "80px", letterSpacing: "-0.02em", fontWeight: "700"}],
+          "headline-md": ["24px", {lineHeight: "32px", fontWeight: "500"}]
+        }
+      }
+    }
+  }
+</script>
+<style is:global>
+  body { background-color: #f9f9f9; color: #000000; -webkit-font-smoothing: antialiased; }
+  .editorial-border { border: 1px solid #E5E5E5; }
+  .hairline-t { border-top: 1px solid #E5E5E5; }
+  .hairline-b { border-bottom: 1px solid #E5E5E5; }
+  .hairline-r { border-right: 1px solid #E5E5E5; }
+  .hairline-l { border-left: 1px solid #E5E5E5; }
+  .hover-lift { transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+  .hover-lift:hover { transform: translateY(-4px); }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+</style>
 </head>
 <body class="font-body-md">
+<!-- ===== NAV ===== -->
 <header class="border-b border-surface-variant bg-background sticky top-0 z-50">
 <nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto">
-  <span class="font-display-lg text-headline-md font-bold text-primary">Nebula</span>
+  <a href="/" class="font-display-lg text-headline-md font-bold text-primary">Nebula</a>
+  <div class="hidden md:flex items-center gap-gutter">
+    <a href="#features" class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors duration-200">Features</a>
+    <a href="#metrics" class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors duration-200">Performance</a>
+    <a href="#coverage" class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors duration-200">Markets</a>
+  </div>
   <div class="flex items-center gap-4">
     <a href="mailto:info@sellumlabs.com" class="font-label-caps text-label-caps text-secondary hover:text-primary transition-colors">Contact</a>
+    <a href={appUrl} class="font-label-caps text-label-caps text-primary border border-primary px-5 py-2 hover:bg-primary hover:text-on-primary transition-all duration-200">Dashboard</a>
   </div>
 </nav>
 </header>
+
+<!-- ===== HERO ===== -->
 <main>
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl min-h-[70vh] flex flex-col justify-center">
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl md:py-[160px]">
   <div class="max-w-4xl">
     <span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">TRADING INTELLIGENCE</span>
-    <h1 class="font-display-lg text-display-lg md:text-[120px] md:leading-[110px] text-primary mb-stack-md">Nebula</h1>
+    <h1 class="font-display-lg text-display-lg md:text-[120px] md:leading-[110px] text-primary mb-stack-md">
+      Nebula
+    </h1>
     <p class="font-body-lg text-body-lg text-secondary max-w-2xl leading-relaxed mb-12">
-      Señales de trading semanales impulsadas por modelos Deep Learning LSTM y análisis de régimen macro. Más información, menos ruido.
+      Señales de trading semanales impulsadas por modelos <strong class="text-primary">Deep Learning LSTM</strong>
+      y <strong class="text-primary">análisis de régimen macro</strong>.
+      Más información, menos ruido.
     </p>
-    <div class="editorial-border bg-white p-6 max-w-md">
-      <div class="grid grid-cols-2 gap-4 text-label-sm font-label-sm">
-        <div class="text-secondary uppercase tracking-wider">Status</div><div class="text-right">En desarrollo</div>
-        <div class="text-secondary uppercase tracking-wider">Próximo hito</div><div class="text-right">Q3 2026</div>
+    <div class="flex flex-col md:flex-row gap-gutter items-start">
+      <a href={appUrl} class="bg-teal text-white px-12 py-4 font-label-caps text-label-caps tracking-widest hover:bg-[#0c8f8b] transition-all cursor-pointer inline-block">
+        ACCESS DASHBOARD
+      </a>
+      <div class="editorial-border px-6 py-4 flex items-center gap-6">
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-sm text-secondary">Status:</span>
+          <span class="font-mono text-sm text-success font-semibold">Live</span>
+        </div>
+        <span class="text-outline/30">|</span>
+        <span class="font-mono text-sm text-secondary">Engine: <span class="text-primary font-semibold">Neural v2.1</span></span>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features" class="hairline-t">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
+  <div class="max-w-2xl mb-stack-lg">
+    <span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">FUNCTIONS</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Procesamiento institucional</h2>
+    <p class="font-body-lg text-body-lg text-secondary">Nebula opera en tres capas: predicción, filtrado macro y cumplimiento normativo. Cada señal pasa por un pipeline de validación multi-etapa antes de llegar a tu dashboard.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-0 editorial-border">
+    {features.map((f, i) => (
+      <div class={`p-12 md:p-16 ${i < 2 ? 'hairline-r' : ''} flex flex-col gap-8 group hover:bg-[#f5f5f5] transition-colors duration-300`}>
+        <div class="w-12 h-12 editorial-border flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary text-[28px]">{f.icon}</span>
+        </div>
+        <div>
+          <h3 class="font-headline-md text-headline-md text-primary mb-4">{f.title}</h3>
+          <p class="text-secondary font-body-md">{f.desc}</p>
+        </div>
+        <div class="mt-auto pt-4">
+          <div class="flex items-center gap-3 font-mono text-xs text-secondary">
+            <span>◆</span> {f.metric}
+            <span class="text-outline/30">|</span>
+            <span>{f.metric2}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+</section>
+
+<!-- ===== METRICS ===== -->
+<section id="metrics" class="hairline-t">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
+  <div class="max-w-2xl mb-stack-lg">
+    <span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">PERFORMANCE</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Benchmarks de estrategia</h2>
+    <p class="font-body-lg text-body-lg text-secondary">Resultados de backtest sobre datos reales de mercado. Rendimiento de la estrategia V3 con rotación de cartera y filtro de régimen macro activado.</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-0 editorial-border">
+    {metrics.map((m, i) => (
+      <div class={`p-8 md:p-12 ${i % 4 < 3 ? 'hairline-r' : ''} hairline-b ${i % 2 === 0 ? 'bg-[#f5f5f5]' : ''}`}>
+        <span class="font-label-caps text-label-caps text-secondary block mb-2">{m.label}</span>
+        <span class={`font-display-lg text-[48px] md:text-[64px] leading-none ${m.color}`}>{m.value}</span>
+        <span class="block font-mono text-xs text-secondary mt-2">{m.sub}</span>
+      </div>
+    ))}
+  </div>
+</div>
+</section>
+
+<!-- ===== PIPELINE ===== -->
+<section class="hairline-t bg-[#f5f5f5]">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
+  <div class="max-w-2xl mb-stack-lg">
+    <span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">ARCHITECTURE</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Pipeline de procesamiento</h2>
+    <p class="font-body-lg text-body-lg text-secondary">Cada señal recorre un pipeline de 5 etapas antes de ser presentada en el dashboard.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-0 editorial-border bg-background">
+    {pipeline.map((p, i) => (
+      <div class={`p-8 ${i < 4 ? 'hairline-r' : ''} relative group hover:bg-[#f5f5f5] transition-colors`}>
+        <span class="font-mono text-[10px] text-secondary tracking-widest">{p.id}</span>
+        <h4 class="font-headline-md text-[18px] text-primary mt-2 mb-3">{p.title}</h4>
+        {p.desc.split('\n').map(line => (
+          <p class="font-mono text-xs text-secondary leading-relaxed">{line}</p>
+        ))}
+        {i < 4 && (
+          <div class="absolute -right-3 top-1/2 -translate-y-1/2 hidden md:block text-secondary/30">
+            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+</section>
+
+<!-- ===== COVERAGE ===== -->
+<section id="coverage" class="hairline-t">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
+  <div class="max-w-2xl mb-stack-lg">
+    <span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">MARKETS</span>
+    <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Cobertura transatlántica</h2>
+    <p class="font-body-lg text-body-lg text-secondary">Soporte multi-mercado con datos en tiempo real. Desde el S&P 500 hasta el IBEX 35, pasando por los blue chips europeos.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-0 editorial-border">
+    {markets.map((region, ri) => (
+      <div class={`p-8 md:p-12 ${ri < 2 ? 'hairline-r' : ''}`}>
+        <div class="flex items-center gap-3 mb-8">
+          <span class="font-mono text-[10px] text-secondary tracking-widest">{region.region}</span>
+          <span class="font-headline-md text-headline-md text-primary">{region.label}</span>
+        </div>
+        <div class="space-y-4">
+          {region.tickers.map(m => (
+            <div class="flex items-center justify-between py-3 border-b border-surface-variant">
+              <span class="font-mono text-sm font-semibold text-primary">{m.t}</span>
+              <div class="flex items-center gap-4">
+                <span class={`font-mono text-xs ${signalColor[m.s]} font-semibold`}>{m.s}</span>
+                <span class={`font-mono text-xs ${valueColor(m.v)}`}>{m.v}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="hairline-t">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl text-center">
+  <span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-6 block">GET STARTED</span>
+  <h2 class="font-headline-lg text-[48px] md:text-[64px] text-primary max-w-3xl mx-auto mb-8 leading-tight">
+    Señales institucionales.<br/>Sin el ruido.
+  </h2>
+  <p class="font-body-lg text-body-lg text-secondary max-w-xl mx-auto mb-12">
+    Accede al dashboard de Nebula y empieza a recibir señales semanales con análisis macro integrado.
+  </p>
+  <a href={appUrl} class="bg-teal text-white px-16 py-5 font-label-caps text-label-caps tracking-[0.25em] hover:bg-[#0c8f8b] transition-all cursor-pointer inline-block">
+    ACCESS DASHBOARD
+  </a>
+</div>
+</section>
 </main>
-<footer class="border-t border-surface-variant mt-stack-xl">
-<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-md text-center text-secondary font-body-md text-sm">
-  &copy; {year} Nebula. Todos los derechos reservados.
+
+<!-- ===== FOOTER ===== -->
+<footer class="hairline-t">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div>
+      <div class="font-display-lg text-headline-md font-bold text-primary mb-3">Nebula</div>
+      <p class="font-body-md text-body-md text-secondary leading-relaxed max-w-xs">
+        Trading intelligence platform. A SELLUM Software Studio product.
+      </p>
+    </div>
+    <div>
+      <h4 class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-6">Links</h4>
+      <div class="flex flex-col gap-4 font-body-md text-body-md text-secondary">
+        <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+        <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+        <a class="hover:text-primary transition-colors" href="mailto:info@sellumlabs.com">info@sellumlabs.com</a>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-6">Contact</h4>
+      <p class="font-body-md text-body-md text-secondary mb-4">
+        <a href="mailto:info@sellumlabs.com" class="hover:text-primary transition-colors">info@sellumlabs.com</a>
+      </p>
+      <p class="font-body-md text-body-md text-secondary/60 text-sm mt-8 pt-8 border-t border-surface-variant">
+        &copy; {year} Nebula. All rights reserved. Built by SELLUM Software Studio.
+      </p>
+    </div>
+  </div>
 </div>
 </footer>
 </body></html>
