@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import t from '../../../i18n/pt.json';
+const lang = 'pt';
+---
+<BaseLayout lang={lang} t={t} title={`${t.privacy.title} | SELLUM`} description={t.site.description}>
+<article class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl" style="max-width:720px">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-stack-md">{t.privacy.title}</h1>
+<p class="text-secondary font-body-md mb-6">{t.privacy.updated}</p>
+<div class="space-y-6 text-secondary font-body-md leading-relaxed">
+<p>A SELLUM Software Studio ("nós," "nosso") está comprometida em proteger sua privacidade.</p>
+<h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4">Informações que Coletamos</h2><p>Podemos coletar informações que você fornece voluntariamente quando nos contata.</p>
+<h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4">Cookies</h2><p>Nosso site usa cookies mínimos essenciais para o funcionamento básico.</p>
+<h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4">Contato</h2><p>Entre em contato: <a href="mailto:info@sellumlabs.com" class="text-primary underline">info@sellumlabs.com</a>.</p>
+</div>
+</article>
+</BaseLayout>

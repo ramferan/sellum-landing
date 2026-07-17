@@ -1,0 +1,30 @@
+---
+import LanguageSelector from './LanguageSelector.astro';
+interface Props { lang: string; t: any; variant?: 'sellum' | 'kalosnap'; ctaUrl?: string; }
+const { lang, t, variant = 'sellum', ctaUrl } = Astro.props;
+const isSellum = variant === 'sellum';
+const navLinks = isSellum
+  ? [{label:'KaloSnap',url:'https://kalosnap.sellumlabs.com'},{label:'Nebula',url:'#'},{label:'Belleza',url:'https://bellezaadiario.com'},{label:'Compliance AI',url:'#'},{label:'Sendify',url:'#'},{label:'Uptime Pyme',url:'#'}]
+  : [{label:t.kalosnap?.nav_journal||'Journal',url:'#'},{label:t.kalosnap?.nav_analysis||'Analysis',url:'#'},{label:t.kalosnap?.nav_science||'Science',url:'#'}];
+---
+
+<header class="w-full top-0 border-b border-surface-variant dark:border-on-tertiary-fixed-variant bg-background dark:bg-background z-50 sticky">
+<nav class="flex justify-between items-center px-margin-desktop py-unit max-w-container-max mx-auto">
+  <a href={isSellum ? '/' : '/'} class="font-display-lg text-headline-md font-bold text-primary dark:text-on-primary-fixed cursor-pointer">
+    {isSellum ? 'SELLUM' : 'KaloSnap'}
+  </a>
+  <div class="hidden md:flex items-center gap-gutter">
+    {navLinks.slice(0, isSellum ? 6 : 3).map(link => (
+      <a href={link.url} class="font-label-caps text-label-caps cursor-pointer hover:text-primary dark:hover:text-on-primary-fixed transition-colors duration-200 text-secondary dark:text-secondary-fixed-dim">{link.label}</a>
+    ))}
+  </div>
+  <div class="flex items-center gap-4">
+    <LanguageSelector lang={lang} variant={variant} />
+    {isSellum ? (
+      <a href="#contact" class="font-label-caps text-label-caps text-primary cursor-pointer hover:underline border border-primary px-4 py-2 inline-block">{t.nav.contact}</a>
+    ) : (
+      <a href={ctaUrl || 'https://app.kalosnap.sellumlabs.com/login'} class="bg-[#0ea5a0] text-white px-6 py-2 font-label-md text-label-md uppercase tracking-wider hover:bg-[#0c8f8b] transition-all cursor-pointer inline-block">{t.kalosnap?.cta || 'Try KaloSnap'}</a>
+    )}
+  </div>
+</nav>
+</header>

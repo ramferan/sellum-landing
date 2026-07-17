@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import t from '../../i18n/en.json';
+const lang = 'en';
+const paragraphs = [
+  { h: 'Information We Collect', p: 'We may collect information that you voluntarily provide when you contact us, including your name and email address. We also automatically collect certain information when you visit our website, such as your IP address, browser type, and usage patterns.' },
+  { h: 'How We Use Your Information', p: 'We use the information we collect to respond to your inquiries, improve our website, send occasional updates if you have opted in, and comply with legal obligations.' },
+  { h: 'Cookies', p: 'Our website uses minimal cookies essential for basic functionality. We do not use tracking cookies or third-party analytics that collect personal data.' },
+  { h: 'Data Security', p: 'We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction.' },
+  { h: 'Your Rights', p: 'Depending on your jurisdiction, you may have the right to access, correct, delete, or port your personal data. You may also have the right to restrict or object to certain processing activities.' },
+  { h: 'Contact', p: `If you have questions about this Privacy Policy, please contact us at <a href="mailto:info@sellumlabs.com" class="text-primary underline">info@sellumlabs.com</a>.` },
+];
+---
+<BaseLayout lang={lang} t={t} title={`${t.privacy.title} | SELLUM`} description={t.site.description}>
+<article class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl" style="max-width:720px">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-stack-md">{t.privacy.title}</h1>
+<p class="text-secondary font-body-md mb-6">{t.privacy.updated}</p>
+<div class="space-y-6 text-secondary font-body-md leading-relaxed">
+<p>SELLUM Software Studio ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
+{paragraphs.map(s => <><h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4" set:html={s.h}>{s.h}</h2><p set:html={s.p}>{s.p}</p></>)}
+</div>
+</article>
+</BaseLayout>

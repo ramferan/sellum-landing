@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortfolioCard from '../../components/PortfolioCard.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import t from '../../i18n/fr.json';
+const lang = 'fr';
+---
+<BaseLayout lang={lang} t={t} title={t.site.title} description={t.site.description}>
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-xl"><div class="max-w-4xl"><span class="font-label-caps text-label-caps text-primary tracking-[0.2em] mb-4 block">{t.hero.tag}</span><h1 class="font-display-lg text-display-lg md:text-[120px] md:leading-[110px] text-primary mb-stack-md">{t.hero.title}</h1><p class="font-body-lg text-body-lg text-secondary max-w-2xl leading-relaxed">{t.hero.description}</p></div></section>
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-lg border-t border-surface-variant"><div class="mb-stack-md flex justify-between items-end"><h2 class="font-headline-lg text-headline-lg text-primary">{t.portfolio.title}</h2><span class="font-label-caps text-label-caps text-secondary">{t.portfolio.label}</span></div><div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">{t.projects.map((project, i) => <PortfolioCard project={project} index={i} exploreLabel={t.portfolio.explore} />)}</div></section>
+<ContactForm t={t} />
+</BaseLayout>
+<script>const o={threshold:0.1};const v=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add('opacity-100');e.target.classList.remove('translate-y-4')}})},o);document.querySelectorAll('section').forEach(function(e){e.classList.add('transition-all','duration-700','ease-out','translate-y-4','opacity-0');v.observe(e)});setTimeout(function(){var h=document.querySelector('section');if(h){h.classList.remove('translate-y-4','opacity-0');h.classList.add('opacity-100')}},100);</script>

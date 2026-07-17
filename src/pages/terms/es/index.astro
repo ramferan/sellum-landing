@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import t from '../../../i18n/es.json';
+const lang = 'es';
+---
+<BaseLayout lang={lang} t={t} title={`${t.terms.title} | SELLUM`} description={t.site.description}>
+<article class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl" style="max-width:720px">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-stack-md">{t.terms.title}</h1>
+<p class="text-secondary font-body-md mb-6">{t.terms.updated}</p>
+<div class="space-y-6 text-secondary font-body-md leading-relaxed">
+<p>Al acceder o utilizar nuestro sitio web y servicios, usted acepta estar sujeto a estos Términos del Servicio.</p>
+<h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4">Licencia de Uso</h2><p>Se concede permiso para acceder temporalmente a los materiales de nuestro sitio web para uso personal y no comercial.</p>
+<h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4">Contacto</h2><p><a href="mailto:info@sellumlabs.com" class="text-primary underline">info@sellumlabs.com</a></p>
+</div>
+</article>
+</BaseLayout>

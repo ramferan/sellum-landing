@@ -1,0 +1,28 @@
+---
+interface Props { lang: string; t: any; variant?: 'sellum' | 'kalosnap'; }
+const { lang, t, variant = 'sellum' } = Astro.props;
+const isSellum = variant === 'sellum';
+const year = 2026;
+const p = isSellum ? `/${lang === 'en' ? '' : lang + '/'}` : `/kalosnap/${lang === 'es' ? '' : lang + '/'}`;
+const privacyPath = isSellum
+  ? `${lang === 'en' ? '/privacy/' : '/privacy/' + lang + '/'}`
+  : '#';
+const termsPath = isSellum
+  ? `${lang === 'en' ? '/terms/' : '/terms/' + lang + '/'}`
+  : '#';
+---
+
+<footer class="w-full border-t border-surface-variant dark:border-on-tertiary-fixed-variant bg-background dark:bg-background">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-md max-w-container-max mx-auto">
+  <div class="font-display-lg text-headline-md text-primary mb-4 md:mb-0">
+    {isSellum ? 'SELLUM' : 'KaloSnap'}
+  </div>
+  <div class="flex flex-wrap justify-center gap-gutter font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
+    {isSellum && <><a class="hover:underline cursor-pointer" href={privacyPath}>{t.footer.privacy}</a><a class="hover:underline cursor-pointer" href={termsPath}>{t.footer.terms}</a></>}
+    <a class="hover:underline cursor-pointer" href="mailto:info@sellumlabs.com">{t.footer.email}</a>
+  </div>
+  <div class="mt-8 md:mt-0 font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim opacity-60">
+    &copy; {year} {isSellum ? 'SELLUM Software Studio' : 'KaloSnap'}. {t.footer.copyright}
+  </div>
+</div>
+</footer>

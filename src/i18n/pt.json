@@ -1,0 +1,38 @@
+{
+  "site": { "title": "SELLUM | Estúdio de Software", "description": "Ferramentas minimalistas para ecossistemas complexos." },
+  "nav": { "contact": "Contato", "lang_en": "EN", "lang_es": "ES", "lang_pt": "PT", "lang_fr": "FR" },
+  "hero": { "tag": "ESTÚDIO DE SOFTWARE", "title": "SELLUM", "description": "Criamos ferramentas minimalistas para ecossistemas complexos. Projetamos e construímos arquitetura de software de alto desempenho que prioriza a integridade estrutural, a clareza e o uso rítmico do espaço funcional." },
+  "portfolio": { "title": "Portfólio", "label": "PROJETOS 01-06", "explore": "EXPLORAR" },
+  "projects": [
+    { "name": "KaloSnap", "desc": "O diário nutricional automático para pessoas ocupadas. Registre suas refeições em um segundo com uma única foto, livre de registros tediosos.", "url": "https://kalosnap.sellumlabs.com" },
+    { "name": "Nebula", "desc": "Inteligência de trading impulsionada por IA que combina modelos Deep Learning LSTM com análise de regime macro para mercados transatlânticos.", "url": "#" },
+    { "name": "Belleza a Diario", "desc": "Conteúdo de beleza curado com o rigor e a estética da publicação editorial de alta qualidade.", "url": "https://bellezaadiario.com" },
+    { "name": "Compliance AI", "desc": "Sistemas automatizados de supervisão regulatória projetados para integração jurídica sem fricção.", "url": "#" },
+    { "name": "Sendify", "desc": "Infraestrutura de mensageria robusta projetada para escalar com altas frequências de entrega.", "url": "#" },
+    { "name": "Uptime Pyme", "desc": "Monitoramento de conversão em tempo real que alerta via WhatsApp quando seus fluxos críticos de negócio falham.", "url": "#" }
+  ],
+  "contact": { "title": "Contato", "description": "Tem um ecossistema complexo que requer uma solução minimalista? Conecte-se com nosso estúdio para oportunidades de parceria.", "name_placeholder": "Seu Nome", "email_placeholder": "Seu Email", "message_placeholder": "Conte-nos sobre seu projeto", "submit": "ENVIAR MENSAGEM" },
+  "footer": { "privacy": "Política de Privacidade", "terms": "Termos de Serviço", "email": "Email", "copyright": "SELLUM Software Studio. Todos os direitos reservados." },
+  "privacy": { "title": "Política de Privacidade", "updated": "Última atualização: 17 de julho de 2026" },
+  "terms": { "title": "Termos de Serviço", "updated": "Última atualização: 17 de julho de 2026" },
+  "kalosnap": {
+    "title": "KaloSnap | O Diário Nutricional para Pessoas Ocupadas",
+    "description": "Registre suas refeições em um segundo com uma única foto.",
+    "hero_tag": "O DIÁRIO NUTRICIONAL PARA PESSOAS OCUPADAS",
+    "hero_sub": "Registre suas refeições em um segundo com uma única foto. Sem balanças, sem formulários infinitos, sem complicações.",
+    "cta": "Experimentar KaloSnap", "view_science": "Ver Ciência",
+    "section_title": "Adeus às Listas Infinitas",
+    "section_desc": "Esqueça de procurar ingredientes um a um em bancos de dados obsoletos. Nosso sistema analisa seu prato instantaneamente com uma única fotografia, identificando os alimentos e calculando seus macros automaticamente para que você possa seguir com o seu dia.",
+    "module1_title": "Registro Fotográfico Instantâneo",
+    "module1_desc": "Capture seu prato e deixe a tecnologia fazer o trabalho pesado. Reconhecimento imediato de qualquer tipo de cozinha.",
+    "module2_title": "Sua Meta sem Escravidão",
+    "module2_desc": "Pare de se obcecar com cada grama. Defina seu objetivo e deixe o KaloSnap cuidar do resto. Resultados reais sem estresse.",
+    "module3_title": "Histórico Inteligente",
+    "module3_desc": "Resumos editoriais semanais que transformam dados brutos em insights biológicos acionáveis. Sua saúde, curada.",
+    "chart_title": "Seu Saldo Diário",
+    "chart_desc": "Uma forma visual e relaxada de ver como suas refeições se alinham com seus objetivos biológicos, sem obsessões.",
+    "chart_progress": "Progresso de Hoje",
+    "bottom_cta": "Comece sua jornada rumo à clareza nutricional.",
+    "system_init": "SISTEMA_INICIO: PRONTO"
+  }
+}

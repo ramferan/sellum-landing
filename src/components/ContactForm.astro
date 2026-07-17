@@ -1,0 +1,19 @@
+---
+interface Props { t: any; }
+const { t } = Astro.props;
+---
+
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-xl" id="contact">
+<div class="bg-primary text-on-primary p-stack-lg">
+  <div class="max-w-xl mb-8">
+    <h2 class="font-display-lg text-headline-lg text-on-primary mb-4 uppercase">{t.contact.title}</h2>
+    <p class="font-body-lg text-body-lg text-surface-container-highest">{t.contact.description}</p>
+  </div>
+  <form action="https://formspree.io/f/maqreypj" method="POST" class="space-y-4 max-w-xl">
+    <input type="text" name="name" placeholder={t.contact.name_placeholder} required class="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder:text-white/50 font-body-md text-body-md focus:outline-none focus:border-white/60 transition-colors" />
+    <input type="email" name="email" placeholder={t.contact.email_placeholder} required class="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder:text-white/50 font-body-md text-body-md focus:outline-none focus:border-white/60 transition-colors" />
+    <textarea name="message" placeholder={t.contact.message_placeholder} rows="4" required class="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder:text-white/50 font-body-md text-body-md focus:outline-none focus:border-white/60 transition-colors resize-none"></textarea>
+    <button type="submit" class="bg-white text-black px-12 py-4 font-label-caps text-label-caps hover:bg-surface-variant transition-colors cursor-pointer">{t.contact.submit}</button>
+  </form>
+</div>
+</section>

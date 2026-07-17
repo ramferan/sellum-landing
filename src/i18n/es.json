@@ -1,0 +1,95 @@
+{
+  "site": {
+    "title": "SELLUM | Estudio de Software",
+    "description": "Herramientas minimalistas para ecosistemas complejos."
+  },
+  "nav": {
+    "contact": "Contacto",
+    "lang_en": "EN", "lang_es": "ES", "lang_pt": "PT", "lang_fr": "FR"
+  },
+  "hero": {
+    "tag": "ESTUDIO DE SOFTWARE",
+    "title": "SELLUM",
+    "description": "Creamos herramientas minimalistas para ecosistemas complejos. Diseñamos y construimos arquitectura de software de alto rendimiento que prioriza la integridad estructural, la claridad y el uso rítmico del espacio funcional."
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "label": "PROYECTOS 01-06",
+    "explore": "EXPLORAR"
+  },
+  "projects": [
+    {
+      "name": "KaloSnap",
+      "desc": "El diario nutricional automático para gente ocupada. Registra tus comidas en un segundo con una sola foto, sin tediosos seguimientos.",
+      "url": "https://kalosnap.sellumlabs.com"
+    },
+    {
+      "name": "Nebula",
+      "desc": "Inteligencia de trading impulsada por IA que combina modelos Deep Learning LSTM con análisis de régimen macro para mercados transatlánticos.",
+      "url": "#"
+    },
+    {
+      "name": "Belleza a Diario",
+      "desc": "Contenido de belleza curado con el rigor y la estética de la publicación editorial de alta gama.",
+      "url": "https://bellezaadiario.com"
+    },
+    {
+      "name": "Compliance AI",
+      "desc": "Sistemas automatizados de supervisión regulatoria diseñados para una integración legal sin fricción.",
+      "url": "#"
+    },
+    {
+      "name": "Sendify",
+      "desc": "Infraestructura de mensajería robusta diseñada para escalar con altas frecuencias de entrega.",
+      "url": "#"
+    },
+    {
+      "name": "Uptime Pyme",
+      "desc": "Vigilancia de conversión en tiempo real que te alerta por WhatsApp cuando tus flujos críticos de negocio fallan.",
+      "url": "#"
+    }
+  ],
+  "contact": {
+    "title": "Contacto",
+    "description": "¿Tienes un ecosistema complejo que requiere una solución minimalista? Conéctate con nuestro estudio para oportunidades de colaboración.",
+    "name_placeholder": "Tu Nombre",
+    "email_placeholder": "Tu Email",
+    "message_placeholder": "Cuéntanos sobre tu proyecto",
+    "submit": "ENVIAR MENSAJE"
+  },
+  "footer": {
+    "privacy": "Política de Privacidad",
+    "terms": "Términos del Servicio",
+    "email": "Email",
+    "copyright": "SELLUM Software Studio. Todos los derechos reservados."
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "updated": "Última actualización: 17 de julio de 2026"
+  },
+  "terms": {
+    "title": "Términos del Servicio",
+    "updated": "Última actualización: 17 de julio de 2026"
+  },
+  "kalosnap": {
+    "title": "KaloSnap | El Diario Nutricional para Gente Ocupada",
+    "description": "Registra tus comidas en un segundo con una sola foto.",
+    "hero_tag": "EL DIARIO NUTRICIONAL PARA GENTE OCUPADA",
+    "hero_sub": "Registra tus comidas en un segundo con una sola foto. Sin pesar alimentos, sin registros infinitos, sin complicaciones.",
+    "cta": "Probar KaloSnap",
+    "view_science": "Ver Ciencia",
+    "section_title": "Adiós a las listas infinitas",
+    "section_desc": "Olvídate de buscar ingredientes uno a uno en bases de datos obsoletas. Nuestro sistema analiza tu plato al instante mediante una simple fotografía, identificando los alimentos y calculando tus macros de forma automática para que puedas seguir con tu día.",
+    "module1_title": "Registro Fotográfico Instantáneo",
+    "module1_desc": "Captura tu plato y deja que la tecnología haga el trabajo sucio. Reconocimiento inmediato de cualquier tipo de cocina.",
+    "module2_title": "Tu Meta sin Esclavitudes",
+    "module2_desc": "Olvídate de obsesionarte con cada gramo. Establece tu objetivo y deja que KaloSnap se encargue del resto. Resultados reales sin estrés.",
+    "module3_title": "Historial Inteligente",
+    "module3_desc": "Resúmenes editoriales semanales que transforman datos brutos en información biológica procesable. Tu salud, curada.",
+    "chart_title": "Tu Balance Diario",
+    "chart_desc": "Una forma visual y relajada de ver cómo se alinean tus comidas con tus objetivos biológicos, sin obsesiones.",
+    "chart_progress": "Progreso de Hoy",
+    "bottom_cta": "Comienza tu viaje hacia la claridad nutricional.",
+    "system_init": "SISTEMA_INICIO: LISTO"
+  }
+}

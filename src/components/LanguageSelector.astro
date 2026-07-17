@@ -1,0 +1,45 @@
+---
+interface Props {
+  lang: string;
+  variant?: 'sellum' | 'kalosnap';
+}
+const { lang, variant = 'sellum' } = Astro.props;
+const langs = ['en', 'es', 'pt', 'fr'];
+const labels: Record<string, string> = { en: 'EN', es: 'ES', pt: 'PT', fr: 'FR' };
+const paths: Record<string, Record<string, string>> = {
+  sellum: { en: '/', es: '/es/', pt: '/pt/', fr: '/fr/' },
+  kalosnap: { en: '/en/', es: '/', pt: '/pt/', fr: '/fr/' },
+};
+const basePath = paths[variant];
+const cls = variant === 'kalosnap' ? 'font-label-md text-label-md' : 'font-label-caps text-label-caps text-xs';
+---
+
+<div class="flex items-center gap-1.5">
+{
+  langs.map((l) => (
+    <a href={basePath[l]} hreflang={l}
+      class={`${cls} transition-colors ${lang === l ? 'text-primary font-bold underline' : 'text-secondary hover:text-primary'}`}
+      aria-label={l === 'en' ? 'Switch to English' : l === 'es' ? 'Cambiar a español' : l === 'pt' ? 'Mudar para português' : 'Passer en français'}>
+      {labels[l]}
+    </a>
+  ))
+}
+</div>
+
+<script>
+document.querySelectorAll('[hreflang]').forEach(function(el) {
+  el.addEventListener('click', function() {
+    localStorage.setItem('sel-lang', this.getAttribute('hreflang'));
+  });
+});
+(function() {
+  var stored = localStorage.getItem('sel-lang');
+  if (stored) {
+    var current = document.documentElement.lang;
+    if (stored !== current) {
+      var m = { en: '/en/', es: '/', pt: '/pt/', fr: '/fr/' };
+      window.location.href = m[stored] || '/';
+    }
+  }
+})();
+</script>

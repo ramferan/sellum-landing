@@ -1,0 +1,38 @@
+{
+  "site": { "title": "SELLUM | Software Studio", "description": "Crafting minimalist tools for complex ecosystems." },
+  "nav": { "contact": "Contact", "lang_en": "EN", "lang_es": "ES", "lang_pt": "PT", "lang_fr": "FR" },
+  "hero": { "tag": "SOFTWARE STUDIO", "title": "SELLUM", "description": "Crafting minimalist tools for complex ecosystems. We design and build high-performance software architecture that prioritizes structural integrity, clarity, and the rhythmic use of functional space." },
+  "portfolio": { "title": "Portfolio", "label": "PROJECTS 01-06", "explore": "EXPLORE" },
+  "projects": [
+    { "name": "KaloSnap", "desc": "The automated food journal for busy people. Log your meals in a second with a single photo, free from tedious tracking.", "url": "https://kalosnap.sellumlabs.com" },
+    { "name": "Nebula", "desc": "AI-powered trading intelligence combining Deep Learning LSTM models with macro regime analysis for transatlantic markets.", "url": "#" },
+    { "name": "Belleza a Diario", "desc": "Curated beauty content delivered with the rigor and aesthetic of high-end editorial publishing.", "url": "https://bellezaadiario.com" },
+    { "name": "Compliance AI", "desc": "Automated regulatory oversight systems designed for frictionless legal integration.", "url": "#" },
+    { "name": "Sendify", "desc": "Robust messaging infrastructure engineered for modern scale and high-frequency delivery.", "url": "#" },
+    { "name": "Uptime Pyme", "desc": "Real-time conversion monitoring that alerts you via WhatsApp when your critical business flows go down.", "url": "#" }
+  ],
+  "contact": { "title": "Inquiry", "description": "Have a complex ecosystem that requires a minimalist solution? Connect with our studio for partnership opportunities.", "name_placeholder": "Your Name", "email_placeholder": "Your Email", "message_placeholder": "Tell us about your project", "submit": "SEND MESSAGE" },
+  "footer": { "privacy": "Privacy Policy", "terms": "Terms of Service", "email": "Email", "copyright": "SELLUM Software Studio. All rights reserved." },
+  "privacy": { "title": "Privacy Policy", "updated": "Last updated: July 17, 2026" },
+  "terms": { "title": "Terms of Service", "updated": "Last updated: July 17, 2026" },
+  "kalosnap": {
+    "title": "KaloSnap | The Nutrition Journal for Busy People",
+    "description": "Log your meals in a second with a single photo.",
+    "hero_tag": "THE NUTRITION JOURNAL FOR BUSY PEOPLE",
+    "hero_sub": "Log your meals in a second with a single photo. No scales, no infinite forms, no friction.",
+    "cta": "Try KaloSnap", "view_science": "View Science",
+    "section_title": "Goodbye to Endless Lists",
+    "section_desc": "Forget searching for ingredients one by one in outdated databases. Our system analyzes your plate instantly with a single photograph, automatically tracking your macros so you can get on with your day.",
+    "module1_title": "Instant Photo Logging",
+    "module1_desc": "Capture your plate and let technology do the heavy lifting. Immediate recognition of any cuisine.",
+    "module2_title": "Goals Without the Chains",
+    "module2_desc": "Stop obsessing over every gram. Set your goal and let KaloSnap handle the rest. Real results without the stress.",
+    "module3_title": "Smart History",
+    "module3_desc": "Weekly editorial summaries that translate raw data into actionable biological insights. Your health, curated.",
+    "chart_title": "Your Daily Balance",
+    "chart_desc": "A visual, stress-free way to see how your meals align with your biological goals, without the obsession.",
+    "chart_progress": "Today's Progress",
+    "bottom_cta": "Begin your journey towards nutritional clarity.",
+    "system_init": "SYSTEM_INIT: READY"
+  }
+}

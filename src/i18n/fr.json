@@ -1,0 +1,38 @@
+{
+  "site": { "title": "SELLUM | Studio de Logiciel", "description": "Outils minimalistes pour écosystèmes complexes." },
+  "nav": { "contact": "Contact", "lang_en": "EN", "lang_es": "ES", "lang_pt": "PT", "lang_fr": "FR" },
+  "hero": { "tag": "STUDIO DE LOGICIEL", "title": "SELLUM", "description": "Nous concevons des outils minimalistes pour des écosystèmes complexes. Nous construisons une architecture logicielle haute performance qui privilégie l'intégrité structurelle, la clarté et l'utilisation rythmique de l'espace fonctionnel." },
+  "portfolio": { "title": "Portfolio", "label": "PROJETS 01-06", "explore": "EXPLORER" },
+  "projects": [
+    { "name": "KaloSnap", "desc": "Le journal alimentaire automatisé pour les personnes occupées. Enregistrez vos repas en une seconde avec une seule photo, sans suivi fastidieux.", "url": "https://kalosnap.sellumlabs.com" },
+    { "name": "Nebula", "desc": "Intelligence de trading alimentée par l'IA combinant des modèles Deep Learning LSTM avec une analyse de régime macro pour les marchés transatlantiques.", "url": "#" },
+    { "name": "Belleza a Diario", "desc": "Contenu de beauté organisé avec la rigueur et l'esthétique de la publication éditoriale haut de gamme.", "url": "https://bellezaadiario.com" },
+    { "name": "Compliance AI", "desc": "Systèmes automatisés de supervision réglementaire conçus pour une intégration juridique sans friction.", "url": "#" },
+    { "name": "Sendify", "desc": "Infrastructure de messagerie robuste conçue pour évoluer avec des fréquences de livraison élevées.", "url": "#" },
+    { "name": "Uptime Pyme", "desc": "Surveillance de conversion en temps réel qui vous alerte via WhatsApp lorsque vos flux critiques échouent.", "url": "#" }
+  ],
+  "contact": { "title": "Contact", "description": "Vous avez un écosystème complexe qui nécessite une solution minimaliste? Contactez notre studio pour des opportunités de partenariat.", "name_placeholder": "Votre Nom", "email_placeholder": "Votre Email", "message_placeholder": "Parlez-nous de votre projet", "submit": "ENVOYER LE MESSAGE" },
+  "footer": { "privacy": "Politique de Confidentialité", "terms": "Conditions d'Utilisation", "email": "Email", "copyright": "SELLUM Software Studio. Tous droits réservés." },
+  "privacy": { "title": "Politique de Confidentialité", "updated": "Dernière mise à jour : 17 juillet 2026" },
+  "terms": { "title": "Conditions d'Utilisation", "updated": "Dernière mise à jour : 17 juillet 2026" },
+  "kalosnap": {
+    "title": "KaloSnap | Le Journal Nutritionnel pour Gens Occupés",
+    "description": "Enregistrez vos repas en une seconde avec une seule photo.",
+    "hero_tag": "LE JOURNAL NUTRITIONNEL POUR GENS OCCUPÉS",
+    "hero_sub": "Enregistrez vos repas en une seconde avec une seule photo. Sans balances, sans formulaires infinis, sans complications.",
+    "cta": "Essayer KaloSnap", "view_science": "Voir la Science",
+    "section_title": "Adieu aux Listes Infinies",
+    "section_desc": "Oubliez la recherche d'ingrédients un par un dans des bases de données obsolètes. Notre système analyse votre assiette instantanément avec une simple photo, identifiant les aliments et calculant vos macros automatiquement pour que vous puissiez continuer votre journée.",
+    "module1_title": "Enregistrement Photo Instantané",
+    "module1_desc": "Capturez votre assiette et laissez la technologie faire le travail. Reconnaissance immédiate de toute cuisine.",
+    "module2_title": "Votre Objectif sans Contrainte",
+    "module2_desc": "Arrêtez de vous obséder sur chaque gramme. Fixez votre objectif et laissez KaloSnap gérer le reste. Des résultats réels sans stress.",
+    "module3_title": "Historique Intelligent",
+    "module3_desc": "Résumés éditoriaux hebdomadaires qui transforment les données brutes en informations biologiques exploitables. Votre santé, organisée.",
+    "chart_title": "Votre Équilibre Quotidien",
+    "chart_desc": "Une façon visuelle et relaxée de voir comment vos repas s'alignent avec vos objectifs biologiques, sans obsession.",
+    "chart_progress": "Progrès d'Aujourd'hui",
+    "bottom_cta": "Commencez votre voyage vers la clarté nutritionnelle.",
+    "system_init": "SYSTÈME_INIT: PRÊT"
+  }
+}

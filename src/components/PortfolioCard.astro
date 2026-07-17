@@ -1,0 +1,26 @@
+---
+interface Props { project: { name: string; desc: string; url: string }; index: number; exploreLabel: string; }
+const { project, index, exploreLabel } = Astro.props;
+const images = [
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuCq-SByEVUs2JRckKD0s-8EIdOpoB1GxTAD3vPzBnNTlOcECfSBb1KnCpyTTDroRELTNdyrefDwNPU8pgbaVJnS5wNg-LRPuh261YFYe9ZmIEgeiptoJ8CbsPe8J3sBu7tCFz75twd2bZm8LlW5OgTMNj8deeY5KO5oIaJoFyS03BjXq5PAe87Gkzpu958c-DPNZ_YWzGrnmd4D0mrxsjcPeRIoxnljLm3iUqOpOcvY1IgzrKrCl4c3VtWhGkXtGQbfZtemrL6eDGtT',
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuAKzV6wZQJwvBeL5i7pgsNrJ7E7ZzRKWyPlVv3-axSYAnsuCAXYwD_e2HavhVYUT6OgadkXRhbpOIX9IGve64-idvnfCofhcyCia0OWS77D0siSLgem9p0XmlmB5K7kulcHTXEZvrJor78UyuFxxNSChGQFxsOAPmrLcZ2cFqUu22vMqHcCCLY45j9_ms7iYW_oxR0agb7r9NaxVzY6yYy5UPZiqatT5RJx68cdy0PyIBhEh3BJReRZx48WXXCaXOUL0404jnWvoRHT',
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuDC2_qpeMhAaL-udmIwrNlruBN_1csjpS1vf83Tf027orax3WGGL5STCDbtO1sFkCd_iVD2Sxz8RnaaPXEPPEO_xVnPTIt0pLdfcm6n3IKLGnueBlWAFhIZYsnPrrK7bsR5B2WNC3azUadonJ_xOEcOT0MFlK_EwpBTm9T0re6277TfBsE_EGLOlYBHCmb73LdpdvfRYVl4jWY25Mh9kXuqUs7NUQEkTnb-ezBOyblhqwfWV4rQ04Lh2zTcXAHr41VFL-Bghq48FfFM',
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuCvPLfbVV9bo1WUbIY5T1XDzN6dREHzx7m3o-PYmPjiHS7xI6xKnglBA9qHq_c7sY8l6GROMdM43F9CIZu7bCPM35Qbx4-JLG5YlQS9QIew2wMkNTd1aM4EwuyYEaGmveCwDClaZljJHhEqt9O94JtBUfoWzSED-MJfU1pf5jOzjbw19oMNYhl4ybTtDsBZTmwZKcWh4tr-k5026wGO-viLKgmLGzsqaTCVEvSE1ZasMrep-RY4o08MIpe0vxQc9wjQP1dcQPuOOMSg',
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuBQwTOfWZs4tQrB7GzCgNeMtnFnNqOHlcLChRoO2Xg3pIDTDMFOIARk9rWOujn9GMvYv5zRr32dttqGQs1G_a2ySy7Fu4uZ93vnQzJG8eCu60zK96PHP0edtvBsC0tYZwRHBnnIc4IKOJStulLkpQwxsjP5HmtOcIXvKxgSMHLXuvvgFpolZary7hpctYhyrZ2J5Sopy6WSiSbT164Z7DjnUWpGEmyWvmRPGQNVs4ZvUaoZZXsFgp5qYldxHah_4CEy3dtsVW6SAuyW',
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuD7qPU0XhMkroFaRbzKIPWJCl2bqN4F6_Ve7ttKpS-rDK6r_tYHEF_-gWQ3kQNWDUGQx8EkY3Kn52tNwGxxRXem6Svvr9zgLLGlXKS2R0uIPscL54eRDBTC3Zeb_LRKIc7Hh8zL9ECC1q3OUf3WzJxMugcnst00Lh4NEqEzBMdjkndSWsvbm39XJgK1QYMm54r9MZZKzJJ5A-8vmCYD5ID31rqW5_4C1vR83JEF0UPyGf0W9fWLsURuKck4cJBpNg___oaEFufhgJK_'
+];
+---
+
+<div class="editorial-border bg-white flex flex-col p-stack-md hover-lift">
+  <div class="aspect-[4/3] bg-surface-container-low mb-6 overflow-hidden">
+    <img class="w-full h-full object-cover grayscale" src={images[index % images.length]} alt={project.name} />
+  </div>
+  <div class="flex-grow">
+    <h3 class="font-headline-md text-headline-md text-primary mb-2">{project.name}</h3>
+    <p class="font-body-md text-body-md text-secondary mb-6">{project.desc}</p>
+  </div>
+  <a class="group inline-flex items-center gap-2 font-label-caps text-label-caps text-primary" href={project.url}>
+    {exploreLabel}
+    <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+  </a>
+</div>

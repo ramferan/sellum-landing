@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import t from '../../../i18n/es.json';
+const lang = 'es';
+---
+<BaseLayout lang={lang} t={t} title={`${t.privacy.title} | SELLUM`} description={t.site.description}>
+<article class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl" style="max-width:720px">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-stack-md">{t.privacy.title}</h1>
+<p class="text-secondary font-body-md mb-6">{t.privacy.updated}</p>
+<div class="space-y-6 text-secondary font-body-md leading-relaxed">
+<p>SELLUM Software Studio ("nosotros," "nuestro") se compromete a proteger su privacidad. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando visita nuestro sitio web.</p>
+<h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4">Información que Recopilamos</h2><p>Podemos recopilar información que usted proporciona voluntariamente cuando nos contacta, incluyendo su nombre y dirección de correo electrónico.</p>
+<h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4">Cómo Usamos su Información</h2><p>Utilizamos la información recopilada para responder a sus consultas, mejorar nuestro sitio web y cumplir con obligaciones legales.</p>
+<h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4">Cookies</h2><p>Nuestro sitio web utiliza cookies mínimas esenciales para el funcionamiento básico.</p>
+<h2 class="font-headline-lg text-[24px] text-primary mt-8 mb-4">Contacto</h2><p>Si tiene preguntas, contáctenos en <a href="mailto:info@sellumlabs.com" class="text-primary underline">info@sellumlabs.com</a>.</p>
+</div>
+</article>
+</BaseLayout>
