@@ -13,15 +13,15 @@ const termsPath = isSellum
 ---
 
 <footer class="w-full border-t border-surface-variant dark:border-on-tertiary-fixed-variant bg-background dark:bg-background">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-md max-w-container-max mx-auto">
-  <div class="font-display-lg text-headline-md text-primary mb-4 md:mb-0">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 md:py-stack-md max-w-container-max mx-auto gap-8 md:gap-0">
+  <div class="font-display-lg text-headline-md text-primary">
     {isSellum ? 'SELLUM' : 'KaloSnap'}
   </div>
-  <div class="flex flex-wrap justify-center gap-gutter font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
-    {isSellum && <><a class="hover:underline cursor-pointer" href={privacyPath}>{t.footer.privacy}</a><a class="hover:underline cursor-pointer" href={termsPath}>{t.footer.terms}</a></>}
-    <a class="hover:underline cursor-pointer" href="mailto:info@sellumlabs.com">{t.footer.email}</a>
+  <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
+    {isSellum && <><a class="hover:underline cursor-pointer transition-colors" href={privacyPath}>{t.footer.privacy}</a><a class="hover:underline cursor-pointer transition-colors" href={termsPath}>{t.footer.terms}</a></>}
+    <a class="hover:underline cursor-pointer transition-colors" href="mailto:info@sellumlabs.com">{t.footer.email}</a>
   </div>
-  <div class="mt-8 md:mt-0 font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim opacity-60">
+  <div class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim opacity-60 text-center md:text-right">
     &copy; {year} {isSellum ? 'SELLUM Software Studio' : 'KaloSnap'}. {t.footer.copyright}
   </div>
 </div>
