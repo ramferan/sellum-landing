@@ -11,7 +11,6 @@ const navLinks = isSellum
   : isKalosnap
     ? [{label:t.kalosnap?.nav_journal||'Journal',url:'#'},{label:t.kalosnap?.nav_analysis||'Analysis',url:'#'},{label:t.kalosnap?.nav_science||'Science',url:'#'}]
     : [{label:'Features',url:'#features'},{label:'Performance',url:'#metrics'},{label:'Markets',url:'#coverage'}];
-const ctaBgClass = isNebula ? 'bg-cyan hover:bg-[#0a7491]' : 'bg-[#0ea5a0] hover:bg-[#0c8f8b]';
 ---
 
 <header class="w-full top-0 border-b border-surface-variant dark:border-on-tertiary-fixed-variant bg-background dark:bg-background z-50 sticky">
@@ -29,7 +28,7 @@ const ctaBgClass = isNebula ? 'bg-cyan hover:bg-[#0a7491]' : 'bg-[#0ea5a0] hover
     {isSellum ? (
       <a href="#contact" class="font-label-caps text-label-caps text-primary cursor-pointer hover:underline border border-primary px-4 py-2 inline-block">{t.nav.contact}</a>
     ) : (
-      <a href={ctaUrl || '#'} class={`${ctaBgClass} text-white px-6 py-2 font-label-md text-label-md uppercase tracking-wider transition-all cursor-pointer inline-block`}>
+      <a href={ctaUrl || '#'} class="bg-accent text-on-accent px-6 py-2 font-label-md text-label-md uppercase tracking-wider hover:bg-accent-hover transition-all cursor-pointer inline-block">
         {isNebula ? 'Dashboard' : (t.kalosnap?.cta || 'Try KaloSnap')}
       </a>
     )}
