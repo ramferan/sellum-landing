@@ -36,9 +36,9 @@ const baseHreflang = isLegalPage ? pagePath : '';
 <link rel="alternate" hreflang="x-default" href="https://selllumlabs.com/"/>
 <link href={fontsLink} rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries" is:inline></script>
 {isSellum ? (
-<script id="tailwind-config">{`
+<script id="tailwind-config" is:inline>{`
   tailwind.config={darkMode:"class",theme:{extend:{colors:{
     "surface-dim":"#dadada","surface-bright":"#f9f9f9","background":"#f9f9f9","on-background":"#1a1c1c",
     "surface-variant":"#e2e2e2","primary":"#000000","secondary":"#5d5f5f","on-primary":"#ffffff",
