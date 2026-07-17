@@ -1,5 +1,0 @@
-{
-  "trailingSlash": true,
-  "buildCommand": "astro build",
-  "outputDirectory": "dist"
-}
