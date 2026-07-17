@@ -3,7 +3,6 @@ interface Props { lang: string; t: any; variant?: 'sellum' | 'kalosnap'; }
 const { lang, t, variant = 'sellum' } = Astro.props;
 const isSellum = variant === 'sellum';
 const year = 2026;
-const p = isSellum ? `/${lang === 'en' ? '' : lang + '/'}` : `/kalosnap/${lang === 'es' ? '' : lang + '/'}`;
 const privacyPath = isSellum
   ? `${lang === 'en' ? '/privacy/' : '/privacy/' + lang + '/'}`
   : '#';
@@ -12,17 +11,42 @@ const termsPath = isSellum
   : '#';
 ---
 
-<footer class="w-full border-t border-surface-variant dark:border-on-tertiary-fixed-variant bg-background dark:bg-background">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 md:py-stack-md max-w-container-max mx-auto gap-8 md:gap-0">
-  <div class="font-display-lg text-headline-md text-primary">
-    {isSellum ? 'SELLUM' : 'KaloSnap'}
-  </div>
-  <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
-    {isSellum && <><a class="hover:underline cursor-pointer transition-colors" href={privacyPath}>{t.footer.privacy}</a><a class="hover:underline cursor-pointer transition-colors" href={termsPath}>{t.footer.terms}</a></>}
-    <a class="hover:underline cursor-pointer transition-colors" href="mailto:info@sellumlabs.com">{t.footer.email}</a>
-  </div>
-  <div class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim opacity-60 text-center md:text-right">
-    &copy; {year} {isSellum ? 'SELLUM Software Studio' : 'KaloSnap'}. {t.footer.copyright}
+<footer class="w-full border-t border-surface-variant bg-[#f5f5f5]">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    <!-- Brand -->
+    <div>
+      <div class="font-display-lg text-headline-md font-bold text-primary mb-3">
+        {isSellum ? 'SELLUM' : 'KaloSnap'}
+      </div>
+      <p class="font-body-md text-body-md text-secondary leading-relaxed max-w-xs">
+        {isSellum
+          ? (lang === 'en' ? 'Software studio crafting minimalist tools for complex ecosystems.' : lang === 'pt' ? 'Estúdio de software criando ferramentas minimalistas para ecossistemas complexos.' : lang === 'fr' ? 'Studio logiciel créant des outils minimalistes pour des écosystèmes complexes.' : 'Estudio de software creando herramientas minimalistas para ecosistemas complejos.')
+          : (lang === 'en' ? 'Nutrition tracking, simplified.' : lang === 'pt' ? 'Monitoramento nutricional, simplificado.' : lang === 'fr' ? 'Suivi nutritionnel, simplifié.' : 'Registro nutricional, simplificado.')}
+      </p>
+    </div>
+    <!-- Links -->
+    <div>
+      <h4 class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-6">
+        {lang === 'en' ? 'Links' : lang === 'pt' ? 'Links' : lang === 'fr' ? 'Liens' : 'Enlaces'}
+      </h4>
+      <div class="flex flex-col gap-4 font-body-md text-body-md text-secondary">
+        {isSellum && <><a class="hover:text-primary transition-colors" href={privacyPath}>{t.footer.privacy}</a><a class="hover:text-primary transition-colors" href={termsPath}>{t.footer.terms}</a></>}
+        <a class="hover:text-primary transition-colors" href="mailto:info@sellumlabs.com">{t.footer.email}</a>
+      </div>
+    </div>
+    <!-- Contact / Copyright -->
+    <div>
+      <h4 class="font-label-caps text-label-caps text-primary uppercase tracking-widest mb-6">
+        {lang === 'en' ? 'Contact' : lang === 'pt' ? 'Contato' : lang === 'fr' ? 'Contact' : 'Contacto'}
+      </h4>
+      <p class="font-body-md text-body-md text-secondary mb-4">
+        <a href="mailto:info@sellumlabs.com" class="hover:text-primary transition-colors">info@sellumlabs.com</a>
+      </p>
+      <p class="font-body-md text-body-md text-secondary/60 text-sm mt-8 pt-8 border-t border-surface-variant">
+        &copy; {year} {isSellum ? 'SELLUM Software Studio' : 'KaloSnap'}. {t.footer.copyright}
+      </p>
+    </div>
   </div>
 </div>
 </footer>
