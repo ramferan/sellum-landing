@@ -5,30 +5,25 @@ const lang = 'es';
 const n = t.nebula;
 const appUrl = 'https://app.sellumlabs.com/nebula';
 const heroBg = 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&q=80';
+const showImg = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80';
 const features = [
   {
-    icon: 'neurology',
     title: n.feature1_title,
     desc: n.feature1_desc,
     metric: n.feature1_metric,
-    metric2: n.feature1_metric2,
-    img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80'
+    metric2: n.feature1_metric2
   },
   {
-    icon: 'travel_explore',
     title: n.feature2_title,
     desc: n.feature2_desc,
     metric: n.feature2_metric,
-    metric2: n.feature2_metric2,
-    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80'
+    metric2: n.feature2_metric2
   },
   {
-    icon: 'verified',
     title: n.feature3_title,
     desc: n.feature3_desc,
     metric: n.feature3_metric,
-    metric2: n.feature3_metric2,
-    img: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&q=80'
+    metric2: n.feature3_metric2
   }
 ];
 const metrics = [
@@ -42,11 +37,11 @@ const metrics = [
   { label: 'CALMAR RATIO', value: '2.03', sub: 'retorno / drawdown', color: 'text-warning' }
 ];
 const pipeline = [
-  { id: '01', title: 'Data Ingestion', desc: 'Alpaca / Tiingo / Yahoo Finance\nFRED (macroeconómico)\n15+ fuentes en tiempo real' },
-  { id: '02', title: 'LSTM Engine', desc: 'Arquitectura LSTM-64\nConformal Prediction (MAPIE)\nVentana de 252 sesiones' },
-  { id: '03', title: 'Meta-Classifier', desc: 'XGBoost validator\nRégimen macro (yield curve, VIX)\nFiltro de riesgo sistémico' },
-  { id: '04', title: 'Compliance', desc: 'Regla fiscal 2 meses (España)\nFiltros ESG\nGestión de restricciones' },
-  { id: '05', title: 'Signal Output', desc: 'Señal UP / DOWN / HOLD\nStop loss dinámico (ATR)\nAlertas vía dashboard' }
+  { id: '01', title: 'Data Ingestion', desc: 'Múltiples fuentes de mercado\nDatos macroeconómicos globales\nAgregación en tiempo real' },
+  { id: '02', title: 'LSTM Engine', desc: 'Modelos de deep learning\nPredicciones con confianza calibrada\nAnálisis de series temporales' },
+  { id: '03', title: 'Meta-Classifier', desc: 'Validador de señales multi-factor\nAnálisis de régimen de mercado\nFiltro de riesgo sistémico' },
+  { id: '04', title: 'Compliance', desc: 'Cumplimiento normativo automatizado\nFiltros de gobernanza\nGestión de restricciones' },
+  { id: '05', title: 'Signal Output', desc: 'Señales direccionales semanales\nGestión de riesgo automatizada\nAlertas en dashboard en tiempo real' }
 ];
 const markets = [
   { region: 'NA', label: 'Norteamérica', tickers: [
@@ -70,11 +65,8 @@ const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
 <BaseLayout lang={lang} t={t} title={n.title} description={n.description} variant="nebula" ctaUrl={appUrl}>
 
 <!-- ===== HERO ===== -->
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl md:py-[160px] relative">
-  <div class="absolute inset-0 overflow-hidden opacity-[0.06] pointer-events-none">
-    <img class="w-full h-full object-cover" src={heroBg} alt="" aria-hidden="true" />
-  </div>
-  <div class="max-w-4xl relative z-10">
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-stack-xl md:pt-[120px] relative">
+  <div class="max-w-4xl">
     <span class="font-label-caps text-label-caps text-accent tracking-[0.2em] mb-4 block">{n.hero_tag}</span>
     <h1 class="font-display-lg text-display-lg md:text-[120px] md:leading-[110px] text-primary mb-stack-md">
       {n.hero_title}
@@ -96,6 +88,14 @@ const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
   </div>
 </section>
 
+<!-- Hero visual -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-stack-lg md:pb-stack-xl">
+  <div class="hairline-border w-full aspect-[21/9] relative overflow-hidden grayscale contrast-125">
+    <div class="w-full h-full bg-cover bg-center" style="background-image:url('{heroBg}')"></div>
+    <div class="absolute bottom-4 left-4 bg-background px-3 py-1 font-label-sm text-label-sm hairline-border">SISTEMA_ACTIVO: OPERATIVO</div>
+  </div>
+</section>
+
 <!-- ===== FEATURES ===== -->
 <section id="features" class="hairline-t">
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
@@ -106,24 +106,16 @@ const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
   </div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-0 editorial-border">
     {features.map((f, i) => (
-      <div class={`${i < 2 ? 'hairline-r' : ''} flex flex-col group hover:bg-[#f5f5f5] transition-colors duration-300`}>
-        <div class="aspect-[4/3] overflow-hidden bg-surface-container-low">
-          <img class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700" src={f.img} alt="" />
+      <div class={`${i < 2 ? 'hairline-r' : ''} p-12 md:p-16 flex flex-col gap-6 group hover:bg-[#f5f5f5] transition-colors duration-300`}>
+        <div>
+          <h3 class="font-headline-md text-headline-md text-primary mb-3">{f.title}</h3>
+          <p class="text-secondary font-body-md">{f.desc}</p>
         </div>
-        <div class="p-12 md:p-16 flex flex-col gap-6 flex-grow">
-          <div class="w-10 h-10 editorial-border flex items-center justify-center">
-            <span class="material-symbols-outlined text-accent text-[24px]">{f.icon}</span>
-          </div>
-          <div>
-            <h3 class="font-headline-md text-headline-md text-primary mb-3">{f.title}</h3>
-            <p class="text-secondary font-body-md">{f.desc}</p>
-          </div>
-          <div class="mt-auto pt-4">
-            <div class="flex items-center gap-3 font-mono text-xs text-secondary">
-              <span class="text-accent">◆</span> {f.metric}
-              <span class="text-outline/30">|</span>
-              <span>{f.metric2}</span>
-            </div>
+        <div class="mt-auto pt-4">
+          <div class="flex items-center gap-3 font-mono text-xs text-secondary">
+            <span class="text-accent">◆</span> {f.metric}
+            <span class="text-outline/30">|</span>
+            <span>{f.metric2}</span>
           </div>
         </div>
       </div>

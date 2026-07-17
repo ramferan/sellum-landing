@@ -24,7 +24,7 @@ const navLinks = isSellum
     ))}
   </div>
   <div class="flex items-center gap-4">
-    {isSellum && <LanguageSelector lang={lang} variant={variant} />}
+    <LanguageSelector lang={lang} variant={variant} />
     {isSellum ? (
       <a href="#contact" class="font-label-caps text-label-caps text-primary cursor-pointer hover:underline border border-primary px-4 py-2 inline-block">{t.nav.contact}</a>
     ) : (

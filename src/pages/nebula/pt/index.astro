@@ -6,9 +6,9 @@ const n = t.nebula;
 const appUrl = 'https://app.sellumlabs.com/nebula';
 const heroBg = 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&q=80';
 const features = [
-  { icon: 'neurology', title: n.feature1_title, desc: n.feature1_desc, metric: n.feature1_metric, metric2: n.feature1_metric2, img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80' },
-  { icon: 'travel_explore', title: n.feature2_title, desc: n.feature2_desc, metric: n.feature2_metric, metric2: n.feature2_metric2, img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80' },
-  { icon: 'verified', title: n.feature3_title, desc: n.feature3_desc, metric: n.feature3_metric, metric2: n.feature3_metric2, img: 'https://images.unsplash.com/photo-1639762681057-408e52192e55?w=600&q=80' }
+  { title: n.feature1_title, desc: n.feature1_desc, metric: n.feature1_metric, metric2: n.feature1_metric2 },
+  { title: n.feature2_title, desc: n.feature2_desc, metric: n.feature2_metric, metric2: n.feature2_metric2 },
+  { title: n.feature3_title, desc: n.feature3_desc, metric: n.feature3_metric, metric2: n.feature3_metric2 }
 ];
 const metrics = [
   { label: 'SHARPE RATIO', value: '1.84', sub: 'vs 0.95 benchmark', color: 'text-cyan' },
@@ -21,11 +21,11 @@ const metrics = [
   { label: 'CALMAR RATIO', value: '2.03', sub: 'retorno / drawdown', color: 'text-warning' }
 ];
 const pipeline = [
-  { id: '01', title: 'Data Ingestion', desc: 'Alpaca / Tiingo / Yahoo Finance\nFRED (macroeconômico)\n15+ fontes em tempo real' },
-  { id: '02', title: 'LSTM Engine', desc: 'Arquitetura LSTM-64\nConformal Prediction (MAPIE)\nJanela de 252 sessões' },
-  { id: '03', title: 'Meta-Classifier', desc: 'XGBoost validator\nRegime macro (yield curve, VIX)\nFiltro de risco sistêmico' },
-  { id: '04', title: 'Compliance', desc: 'Regra fiscal 2 meses (Espanha)\nFiltros ESG\nGestão de restrições' },
-  { id: '05', title: 'Signal Output', desc: 'Sinal UP / DOWN / HOLD\nStop loss dinâmico (ATR)\nAlertas via dashboard' }
+  { id: '01', title: 'Data Ingestion', desc: 'Múltiplas fontes de mercado\nDados macroeconômicos globais\nAgregação em tempo real' },
+  { id: '02', title: 'LSTM Engine', desc: 'Modelos de deep learning\nPrevisões com confiança calibrada\nAnálise de séries temporais' },
+  { id: '03', title: 'Meta-Classifier', desc: 'Validador de sinais multifator\nAnálise de regime de mercado\nFiltro de risco sistêmico' },
+  { id: '04', title: 'Compliance', desc: 'Conformidade regulatória automatizada\nFiltros de governança\nGestão de restrições' },
+  { id: '05', title: 'Signal Output', desc: 'Sinais direcionais semanais\nGestão de risco automatizada\nAlertas em dashboard em tempo real' }
 ];
 const markets = [
   { region: 'NA', label: 'América do Norte', tickers: [
@@ -48,12 +48,10 @@ const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
 ---
 <BaseLayout lang={lang} t={t} title={n.title} description={n.description} variant="nebula" ctaUrl={appUrl}>
 
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl md:py-[160px] relative">
-  <div class="absolute inset-0 overflow-hidden opacity-[0.06] pointer-events-none">
-    <img class="w-full h-full object-cover" src={heroBg} alt="" aria-hidden="true" />
-  </div>
-  <div class="max-w-4xl relative z-10">
-    <span class="font-label-caps text-label-caps text-accent tracking-[0.2em] mb-4 block">{n.hero_tag}</span>
+<!-- ===== HERO ===== -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-stack-xl md:pt-[120px] relative">
+  <div class="max-w-4xl">
+    <span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.hero_tag}</span>
     <h1 class="font-display-lg text-display-lg md:text-[120px] md:leading-[110px] text-primary mb-stack-md">{n.hero_title}</h1>
     <p class="font-body-lg text-body-lg text-secondary max-w-2xl leading-relaxed mb-12" set:html={n.hero_sub} />
     <div class="flex flex-col md:flex-row gap-gutter items-start">
@@ -67,24 +65,28 @@ const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
   </div>
 </section>
 
+<!-- Hero visual -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-stack-lg md:pb-stack-xl">
+  <div class="hairline-border w-full aspect-[21/9] relative overflow-hidden grayscale contrast-125">
+    <div class="w-full h-full bg-cover bg-center" style="background-image:url('{heroBg}')"></div>
+    <div class="absolute bottom-4 left-4 bg-background px-3 py-1 font-label-sm text-label-sm hairline-border">SISTEMA_ATIVO: OPERACIONAL</div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
 <section id="features" class="hairline-t"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
   <div class="max-w-2xl mb-stack-lg"><span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.section_features_tag}</span>
   <h2 class="font-headline-lg text-headline-lg text-primary mb-4">{n.section_features_title}</h2>
   <p class="font-body-lg text-body-lg text-secondary">{n.section_features_desc}</p></div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-0 editorial-border">{features.map((f, i) => (
-    <div class={`${i < 2 ? 'hairline-r' : ''} flex flex-col group hover:bg-[#f5f5f5] transition-colors duration-300`}>
-      <div class="aspect-[4/3] overflow-hidden bg-surface-container-low">
-        <img class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700" src={f.img} alt="" />
-      </div>
-      <div class="p-12 md:p-16 flex flex-col gap-6 flex-grow">
-        <div class="w-10 h-10 editorial-border flex items-center justify-center"><span class="material-symbols-outlined text-accent text-[24px]">{f.icon}</span></div>
-        <div><h3 class="font-headline-md text-headline-md text-primary mb-3">{f.title}</h3><p class="text-secondary font-body-md">{f.desc}</p></div>
-        <div class="mt-auto pt-4"><div class="flex items-center gap-3 font-mono text-xs text-secondary"><span class="text-accent">◆</span> {f.metric}<span class="text-outline/30">|</span><span>{f.metric2}</span></div></div>
-      </div>
+    <div class={`${i < 2 ? 'hairline-r' : ''} p-12 md:p-16 flex flex-col gap-6 group hover:bg-[#f5f5f5] transition-colors duration-300`}>
+      <div><h3 class="font-headline-md text-headline-md text-primary mb-3">{f.title}</h3><p class="text-secondary font-body-md">{f.desc}</p></div>
+      <div class="mt-auto pt-4"><div class="flex items-center gap-3 font-mono text-xs text-secondary"><span class="text-accent">◆</span> {f.metric}<span class="text-outline/30">|</span><span>{f.metric2}</span></div></div>
     </div>
   ))}</div>
 </div></section>
 
+<!-- ===== METRICS ===== -->
 <section id="metrics" class="hairline-t"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
   <div class="max-w-2xl mb-stack-lg"><span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.section_metrics_tag}</span>
   <h2 class="font-headline-lg text-headline-lg text-primary mb-4">{n.section_metrics_title}</h2>
@@ -98,6 +100,7 @@ const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
   ))}</div>
 </div></section>
 
+<!-- ===== PIPELINE ===== -->
 <section class="hairline-t bg-[#f5f5f5]"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
   <div class="max-w-2xl mb-stack-lg"><span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.section_pipeline_tag}</span>
   <h2 class="font-headline-lg text-headline-lg text-primary mb-4">{n.section_pipeline_title}</h2>
@@ -112,6 +115,7 @@ const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
   ))}</div>
 </div></section>
 
+<!-- ===== COVERAGE ===== -->
 <section id="coverage" class="hairline-t"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
   <div class="max-w-2xl mb-stack-lg"><span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.section_markets_tag}</span>
   <h2 class="font-headline-lg text-headline-lg text-primary mb-4">{n.section_markets_title}</h2>
@@ -129,6 +133,7 @@ const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
   ))}</div>
 </div></section>
 
+<!-- ===== CTA ===== -->
 <section class="hairline-t"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl text-center">
   <span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-6 block">{n.section_cta_tag}</span>
   <h2 class="font-headline-lg text-[48px] md:text-[64px] text-primary max-w-3xl mx-auto mb-8 leading-tight" set:html={n.section_cta_title} />
