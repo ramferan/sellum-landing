@@ -107,33 +107,59 @@ Use the project's design system: [DESIGN SYSTEM DESCRIPTION].
 Return ONLY the complete HTML file. Start with `<!DOCTYPE html>`. No markdown wrapping, no explanations. Use TailwindCSS CDN.
 ```
 
----
-
-## 📁 Fase 3: Almacenamiento
-
-Los HTML generados por Stitch se guardan en:
-
-```
-.context/stitch-previews/[project]-[screen].html
 ```
 
-| Proyecto | Ruta de previews |
-|:---------|:-----------------|
-| sellum-landing | `.context/stitch-previews/` |
-| kalosnap (app) | `stitch-screens/` (existente) |
+### 2.3 Prompt para Nebula Landing
+
+```
+Generate a complete, self-contained HTML file for NEBULA product landing page.
+Use the SELLUM Labs editorial design system: black and white, high contrast,
+Playfair Display for headings, Hanken Grotesk for body text, sharp corners (no border-radius),
+1px editorial borders (#E5E5E5), background #f9f9f9.
+
+## WHAT THIS SCREEN DOES
+Product landing page for Nebula — an AI-assisted trading signal platform.
+Communicates credibility, quantitative rigor, and removes emotional noise from trading.
+
+### Core Sections (by priority)
+1. Hero: "NEBULA" title, tagline "TRADING INTELLIGENCE", LSTM + macro subtitle, teal CTA
+2. Metrics row: 84% accuracy, $2.4M backtested, 1,200+ instruments
+3. How it works: 3 steps (Data → Signal → Decision)
+4. Features: LSTM models, Macro Analysis, Risk Management
+5. Bottom CTA: "Start trading with clarity"
+
+### Key Entities
+- LSTM Deep Learning, Macro Regime Filtering, Risk Management, Weekly Signals
+
+### User Context
+- Traders and investors (retail and institutional), desktop-first, professional tone
+
+## MOCK DATA
+- 84% signal accuracy, $2.4M backtested volume, 1,200+ instruments analyzed
+
+## DESIGN RULES
+- PRIMARY: #000000, SECONDARY: #5d5f5f, BG: #f9f9f9
+- CTA only: #0ea5a0 (teal). NO other colors. No border-radius.
+- 1px borders #E5E5E5, grayscale images, Material Symbols
+- Fonts: Playfair Display (headings), Hanken Grotesk (body)
+- TailwindCSS CDN
+
+## OUTPUT
+Return ONLY the complete HTML file. Start with `<!DOCTYPE html>`. No markdown wrapping.
+```
 
 ---
 
-## 🔍 Fase 4: Revisión e Iteración
+## 🔍 Fase 3: Revisión e Iteración
 
-1. Abrir el HTML directamente en navegador o servirlo con `npx serve .context/stitch-previews/`
+1. Abrir el HTML directamente en navegador o servirlo con `npx serve`
 2. Evaluar contra `guia_diseno.md` del proyecto
 3. Proporcionar feedback concreto
 4. Iterar hasta aprobación ✅
 
 ---
 
-## 🏗️ Fase 5: Implementación
+## 🏗️ Fase 4: Implementación
 
 Una vez aprobado el diseño:
 
@@ -151,8 +177,8 @@ Una vez aprobado el diseño:
 | Guía de diseño SELLUM | [`.context/guia_diseno.md`](./guia_diseno.md) |
 | Guía de diseño KaloSnap | `../kalosnap/.context/guia_diseno.md` |
 | Guidelines sellum | [`.context/guidelines.md`](./guidelines.md) |
-| Previews existentes (belleza) | `../bellezaadiario/stitch-screens/` |
-| Previews existentes (kalosnap) | `../kalosnap/stitch-screens/` |
+| Previews belleza | `../bellezaadiario/stitch-screens/` |
+| Previews kalosnap | `../kalosnap/stitch-screens/` |
 
 ---
 
