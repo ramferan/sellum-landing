@@ -1,7 +1,7 @@
 ---
 interface Props {
   lang: string;
-  variant?: 'sellum' | 'kalosnap';
+  variant?: 'sellum' | 'kalosnap' | 'nebula';
 }
 const { lang, variant = 'sellum' } = Astro.props;
 const langs = ['en', 'es', 'pt', 'fr'];
@@ -9,6 +9,7 @@ const labels: Record<string, string> = { en: 'EN', es: 'ES', pt: 'PT', fr: 'FR' 
 const paths: Record<string, Record<string, string>> = {
   sellum: { en: '/en/', es: '/', pt: '/pt/', fr: '/fr/' },
   kalosnap: { en: '/kalosnap/en/', es: '/kalosnap/', pt: '/kalosnap/pt/', fr: '/kalosnap/fr/' },
+  nebula: { en: '/nebula/en/', es: '/nebula/', pt: '/nebula/pt/', fr: '/nebula/fr/' },
 };
 const basePath = paths[variant];
 const cls = variant === 'kalosnap' ? 'font-label-md text-label-md' : 'font-label-caps text-label-caps text-xs';
@@ -37,13 +38,15 @@ document.querySelectorAll('[hreflang]').forEach(function(el) {
   if (stored) {
     var current = document.documentElement.lang;
     if (stored !== current) {
-      var isK = window.location.pathname.indexOf('/kalosnap') === 0;
+      var path = window.location.pathname;
+      var isK = path.indexOf('/kalosnap') === 0;
+      var isN = path.indexOf('/nebula') === 0;
       var sellum = { en: '/en/', es: '/', pt: '/pt/', fr: '/fr/' };
       var kalosnap = { en: '/kalosnap/en/', es: '/kalosnap/', pt: '/kalosnap/pt/', fr: '/kalosnap/fr/' };
-      var m = isK ? kalosnap : sellum;
+      var nebula = { en: '/nebula/en/', es: '/nebula/', pt: '/nebula/pt/', fr: '/nebula/fr/' };
+      var m = isK ? kalosnap : isN ? nebula : sellum;
       window.location.href = m[stored] || '/';
     }
   }
 })();
 </script>
-

@@ -1,14 +1,26 @@
 ---
-interface Props { lang: string; t: any; variant?: 'sellum' | 'kalosnap'; }
+interface Props { lang: string; t: any; variant?: 'sellum' | 'kalosnap' | 'nebula'; }
 const { lang, t, variant = 'sellum' } = Astro.props;
 const isSellum = variant === 'sellum';
+const isKalosnap = variant === 'kalosnap';
+const isNebula = variant === 'nebula';
 const year = 2026;
+const brandName = isSellum ? 'SELLUM' : isKalosnap ? 'KaloSnap' : 'Nebula';
 const privacyPath = isSellum
   ? `${lang === 'en' ? '/privacy/' : '/privacy/' + lang + '/'}`
   : '#';
 const termsPath = isSellum
   ? `${lang === 'en' ? '/terms/' : '/terms/' + lang + '/'}`
   : '#';
+const tagline = isSellum
+  ? (lang === 'en' ? 'Software studio crafting minimalist tools for complex ecosystems.' : lang === 'pt' ? 'Estúdio de software criando ferramentas minimalistas para ecossistemas complexos.' : lang === 'fr' ? 'Studio logiciel créant des outils minimalistes pour des écosystèmes complexes.' : 'Estudio de software creando herramientas minimalistas para ecosistemas complejos.')
+  : isKalosnap
+    ? (lang === 'en' ? 'Nutrition tracking, simplified.' : lang === 'pt' ? 'Monitoramento nutricional, simplificado.' : lang === 'fr' ? 'Suivi nutritionnel, simplifié.' : 'Registro nutricional, simplificado.')
+    : (lang === 'en' ? 'Trading intelligence platform.' : lang === 'pt' ? 'Plataforma de inteligência de trading.' : lang === 'fr' ? 'Plateforme d\'intelligence de trading.' : 'Plataforma de inteligencia de trading.');
+const productLabel = isSellum ? 'SELLUM Software Studio' : isKalosnap ? 'KaloSnap' : 'Nebula';
+const productSuffix = isNebula ? ' A SELLUM Software Studio product.' : '';
+const copyrightSuffix = isSellum ? '. All rights reserved.' : isKalosnap ? '. All rights reserved.' : '. All rights reserved. Built by SELLUM Software Studio.';
+const email = isSellum ? 'info@sellumlabs.com' : 'info@sellumlabs.com';
 ---
 
 <footer class="w-full border-t border-surface-variant bg-[#f5f5f5]">
@@ -17,12 +29,10 @@ const termsPath = isSellum
     <!-- Brand -->
     <div>
       <div class="font-display-lg text-headline-md font-bold text-primary mb-3">
-        {isSellum ? 'SELLUM' : 'KaloSnap'}
+        {brandName}
       </div>
       <p class="font-body-md text-body-md text-secondary leading-relaxed max-w-xs">
-        {isSellum
-          ? (lang === 'en' ? 'Software studio crafting minimalist tools for complex ecosystems.' : lang === 'pt' ? 'Estúdio de software criando ferramentas minimalistas para ecossistemas complexos.' : lang === 'fr' ? 'Studio logiciel créant des outils minimalistes pour des écosystèmes complexes.' : 'Estudio de software creando herramientas minimalistas para ecosistemas complejos.')
-          : (lang === 'en' ? 'Nutrition tracking, simplified.' : lang === 'pt' ? 'Monitoramento nutricional, simplificado.' : lang === 'fr' ? 'Suivi nutritionnel, simplifié.' : 'Registro nutricional, simplificado.')}
+        {tagline}{productSuffix}
       </p>
     </div>
     <!-- Links -->
@@ -32,7 +42,7 @@ const termsPath = isSellum
       </h4>
       <div class="flex flex-col gap-4 font-body-md text-body-md text-secondary">
         {isSellum && <><a class="hover:text-primary transition-colors" href={privacyPath}>{t.footer.privacy}</a><a class="hover:text-primary transition-colors" href={termsPath}>{t.footer.terms}</a></>}
-        <a class="hover:text-primary transition-colors" href="mailto:info@sellumlabs.com">{t.footer.email}</a>
+        <a class="hover:text-primary transition-colors" href="mailto:{email}">{email}</a>
       </div>
     </div>
     <!-- Contact / Copyright -->
@@ -41,10 +51,10 @@ const termsPath = isSellum
         {lang === 'en' ? 'Contact' : lang === 'pt' ? 'Contato' : lang === 'fr' ? 'Contact' : 'Contacto'}
       </h4>
       <p class="font-body-md text-body-md text-secondary mb-4">
-        <a href="mailto:info@sellumlabs.com" class="hover:text-primary transition-colors">info@sellumlabs.com</a>
+        <a href="mailto:{email}" class="hover:text-primary transition-colors">{email}</a>
       </p>
       <p class="font-body-md text-body-md text-secondary/60 text-sm mt-8 pt-8 border-t border-surface-variant">
-        &copy; {year} {isSellum ? 'SELLUM Software Studio' : 'KaloSnap'}. {t.footer.copyright}
+        &copy; {year} {productLabel}{copyrightSuffix}
       </p>
     </div>
   </div>

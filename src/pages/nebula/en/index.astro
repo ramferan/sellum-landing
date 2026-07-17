@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import t from '../../../i18n/en.json';
+const lang = 'en';
+const n = t.nebula;
+const appUrl = 'https://app.sellumlabs.com/nebula';
+const features = [
+  { icon: 'neurology', title: n.feature1_title, desc: n.feature1_desc, metric: n.feature1_metric, metric2: n.feature1_metric2 },
+  { icon: 'travel_explore', title: n.feature2_title, desc: n.feature2_desc, metric: n.feature2_metric, metric2: n.feature2_metric2 },
+  { icon: 'verified', title: n.feature3_title, desc: n.feature3_desc, metric: n.feature3_metric, metric2: n.feature3_metric2 }
+];
+const metrics = [
+  { label: 'SHARPE RATIO', value: '1.84', sub: 'vs 0.95 benchmark', color: 'text-cyan' },
+  { label: 'WIN RATE', value: '68%', sub: '+12% vs buy & hold', color: 'text-success' },
+  { label: 'MAX DRAWDOWN', value: '-12.4%', sub: 'vs -18.7% market', color: 'text-danger' },
+  { label: 'STRATEGY ALPHA', value: '+8.6%', sub: 'annualized', color: 'text-success' },
+  { label: 'EXPECTANCY', value: '2.41', sub: 'win/loss ratio', color: 'text-cyan' },
+  { label: 'TRADES', value: '847', sub: 'total backtest 12m', color: 'text-cyan' },
+  { label: 'EXPOSURE', value: '62%', sub: 'time in market', color: 'text-cyan' },
+  { label: 'CALMAR RATIO', value: '2.03', sub: 'return / drawdown', color: 'text-warning' }
+];
+const pipeline = [
+  { id: '01', title: 'Data Ingestion', desc: 'Alpaca / Tiingo / Yahoo Finance\nFRED (macroeconomic)\n15+ real-time sources' },
+  { id: '02', title: 'LSTM Engine', desc: 'LSTM-64 architecture\nConformal Prediction (MAPIE)\n252-session window' },
+  { id: '03', title: 'Meta-Classifier', desc: 'XGBoost validator\nMacro regime (yield curve, VIX)\nSystemic risk filter' },
+  { id: '04', title: 'Compliance', desc: 'Spanish 2-month fiscal rule\nESG filters\nRestriction management' },
+  { id: '05', title: 'Signal Output', desc: 'UP / DOWN / HOLD signal\nDynamic stop loss (ATR)\nDashboard alerts' }
+];
+const markets = [
+  { region: 'NA', label: 'North America', tickers: [
+    { t: 'SPY', s: 'UP', v: '+3.2%' }, { t: 'QQQ', s: 'UP', v: '+5.1%' },
+    { t: 'NVDA', s: 'HOLD', v: '-1.2%' }, { t: 'AAPL', s: 'UP', v: '+2.8%' },
+    { t: 'TSLA', s: 'DOWN', v: '-4.3%' }
+  ]},
+  { region: 'EU', label: 'Europe', tickers: [
+    { t: 'SAP.DE', s: 'UP', v: '+2.1%' }, { t: 'ASML.AS', s: 'HOLD', v: '+0.5%' },
+    { t: 'MC.PA', s: 'DOWN', v: '-1.8%' }, { t: 'OR.PA', s: 'UP', v: '+1.4%' },
+    { t: 'NESN.SW', s: 'HOLD', v: '-0.3%' }
+  ]},
+  { region: 'IB', label: 'IBEX 35', tickers: [
+    { t: 'SAN.MC', s: 'UP', v: '+4.2%' }, { t: 'BBVA.MC', s: 'UP', v: '+3.7%' },
+    { t: 'ITX.MC', s: 'HOLD', v: '-0.8%' }, { t: 'TEF.MC', s: 'DOWN', v: '-2.1%' }
+  ]}
+];
+const signalColor = { 'UP': 'text-success', 'DOWN': 'text-danger', 'HOLD': 'text-secondary' };
+const valueColor = (v) => v.startsWith('+') ? 'text-success' : 'text-danger';
+---
+<BaseLayout lang={lang} t={t} title={n.title} description={n.description} variant="nebula" ctaUrl={appUrl}>
+
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-xl md:py-[160px]">
+  <div class="max-w-4xl">
+    <span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.hero_tag}</span>
+    <h1 class="font-display-lg text-display-lg md:text-[120px] md:leading-[110px] text-primary mb-stack-md">{n.hero_title}</h1>
+    <p class="font-body-lg text-body-lg text-secondary max-w-2xl leading-relaxed mb-12" set:html={n.hero_sub} />
+    <div class="flex flex-col md:flex-row gap-gutter items-start">
+      <a href={appUrl} class="bg-cyan text-white px-12 py-4 font-label-caps text-label-caps tracking-widest hover:bg-[#0a7491] transition-all cursor-pointer inline-block">{n.cta}</a>
+      <div class="editorial-border px-6 py-4 flex items-center gap-6">
+        <div class="flex items-center gap-3"><span class="font-mono text-sm text-secondary">Status:</span><span class="font-mono text-sm text-success font-semibold">{n.status}</span></div>
+        <span class="text-outline/30">|</span>
+        <span class="font-mono text-sm text-secondary">{n.engine}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="hairline-t"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
+  <div class="max-w-2xl mb-stack-lg"><span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.section_features_tag}</span>
+  <h2 class="font-headline-lg text-headline-lg text-primary mb-4">{n.section_features_title}</h2>
+  <p class="font-body-lg text-body-lg text-secondary">{n.section_features_desc}</p></div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-0 editorial-border">{features.map((f, i) => (
+    <div class={`p-12 md:p-16 ${i < 2 ? 'hairline-r' : ''} flex flex-col gap-8 group hover:bg-[#f5f5f5] transition-colors duration-300`}>
+      <div class="w-12 h-12 editorial-border flex items-center justify-center"><span class="material-symbols-outlined text-cyan text-[28px]">{f.icon}</span></div>
+      <div><h3 class="font-headline-md text-headline-md text-primary mb-4">{f.title}</h3><p class="text-secondary font-body-md">{f.desc}</p></div>
+      <div class="mt-auto pt-4"><div class="flex items-center gap-3 font-mono text-xs text-secondary"><span class="text-cyan">◆</span> {f.metric}<span class="text-outline/30">|</span><span>{f.metric2}</span></div></div>
+    </div>
+  ))}</div>
+</div></section>
+
+<section id="metrics" class="hairline-t"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
+  <div class="max-w-2xl mb-stack-lg"><span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.section_metrics_tag}</span>
+  <h2 class="font-headline-lg text-headline-lg text-primary mb-4">{n.section_metrics_title}</h2>
+  <p class="font-body-lg text-body-lg text-secondary">{n.section_metrics_desc}</p></div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-0 editorial-border">{metrics.map((m, i) => (
+    <div class={`p-8 md:p-12 ${i % 4 < 3 ? 'hairline-r' : ''} hairline-b ${i % 2 === 0 ? 'bg-[#f5f5f5]' : ''}`}>
+      <span class="font-label-caps text-label-caps text-secondary block mb-2">{m.label}</span>
+      <span class={`font-display-lg text-[48px] md:text-[64px] leading-none ${m.color}`}>{m.value}</span>
+      <span class="block font-mono text-xs text-secondary mt-2">{m.sub}</span>
+    </div>
+  ))}</div>
+</div></section>
+
+<section class="hairline-t bg-[#f5f5f5]"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
+  <div class="max-w-2xl mb-stack-lg"><span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.section_pipeline_tag}</span>
+  <h2 class="font-headline-lg text-headline-lg text-primary mb-4">{n.section_pipeline_title}</h2>
+  <p class="font-body-lg text-body-lg text-secondary">{n.section_pipeline_desc}</p></div>
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-0 editorial-border bg-background">{pipeline.map((p, i) => (
+    <div class={`p-8 ${i < 4 ? 'hairline-r' : ''} relative group hover:bg-[#f5f5f5] transition-colors`}>
+      <span class="font-mono text-[10px] text-secondary tracking-widest">{p.id}</span>
+      <h4 class="font-headline-md text-[18px] text-primary mt-2 mb-3">{p.title}</h4>
+      {p.desc.split('\n').map(line => (<p class="font-mono text-xs text-secondary leading-relaxed">{line}</p>))}
+      {i < 4 && (<div class="absolute -right-3 top-1/2 -translate-y-1/2 hidden md:block text-secondary/30"><span class="material-symbols-outlined text-[20px]">arrow_forward</span></div>)}
+    </div>
+  ))}</div>
+</div></section>
+
+<section id="coverage" class="hairline-t"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl">
+  <div class="max-w-2xl mb-stack-lg"><span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-4 block">{n.section_markets_tag}</span>
+  <h2 class="font-headline-lg text-headline-lg text-primary mb-4">{n.section_markets_title}</h2>
+  <p class="font-body-lg text-body-lg text-secondary">{n.section_markets_desc}</p></div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-0 editorial-border">{markets.map((region, ri) => (
+    <div class={`p-8 md:p-12 ${ri < 2 ? 'hairline-r' : ''}`}>
+      <div class="flex items-center gap-3 mb-8"><span class="font-mono text-[10px] text-secondary tracking-widest">{region.region}</span><span class="font-headline-md text-headline-md text-primary">{region.label}</span></div>
+      <div class="space-y-4">{region.tickers.map(m => (
+        <div class="flex items-center justify-between py-3 border-b border-surface-variant">
+          <span class="font-mono text-sm font-semibold text-primary">{m.t}</span>
+          <div class="flex items-center gap-4"><span class={`font-mono text-xs ${signalColor[m.s]} font-semibold`}>{m.s}</span><span class={`font-mono text-xs ${valueColor(m.v)}`}>{m.v}</span></div>
+        </div>
+      ))}</div>
+    </div>
+  ))}</div>
+</div></section>
+
+<section class="hairline-t"><div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg md:py-stack-xl text-center">
+  <span class="font-label-caps text-label-caps text-cyan tracking-[0.2em] mb-6 block">{n.section_cta_tag}</span>
+  <h2 class="font-headline-lg text-[48px] md:text-[64px] text-primary max-w-3xl mx-auto mb-8 leading-tight" set:html={n.section_cta_title} />
+  <p class="font-body-lg text-body-lg text-secondary max-w-xl mx-auto mb-12">{n.section_cta_desc}</p>
+  <a href={appUrl} class="bg-cyan text-white px-16 py-5 font-label-caps text-label-caps tracking-[0.25em] hover:bg-[#0a7491] transition-all cursor-pointer inline-block">{n.cta}</a>
+</div></section>
+
+</BaseLayout>

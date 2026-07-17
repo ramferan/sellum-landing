@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "postbuild": "if [ \"$SITE\" = \"nebula\" ]; then cp dist/nebula/index.html dist/index.html && echo '→ Root replaced with nebula page'; fi",
+    "postbuild": "if [ \"$SITE\" = \"nebula\" ]; then cp dist/nebula/index.html dist/index.html && echo '→ Root replaced with nebula page'; elif [ \"$SITE\" = \"kalosnap\" ]; then cp dist/kalosnap/index.html dist/index.html && echo '→ Root replaced with kalosnap page'; fi",
     "preview": "astro preview"
   },
   "dependencies": {
