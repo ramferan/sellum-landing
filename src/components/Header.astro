@@ -4,7 +4,7 @@ interface Props { lang: string; t: any; variant?: 'sellum' | 'kalosnap'; ctaUrl?
 const { lang, t, variant = 'sellum', ctaUrl } = Astro.props;
 const isSellum = variant === 'sellum';
 const navLinks = isSellum
-  ? [{label:'KaloSnap',url:'https://kalosnap.sellumlabs.com'},{label:'Nebula',url:'/nebula/'},{label:'Belleza',url:'https://bellezaadiario.com'},{label:'Compliance AI',url:'#'},{label:'Sendify',url:'#'},{label:'Uptime Pyme',url:'#'}]
+  ? [{label:'KaloSnap',url:'https://kalosnap.sellumlabs.com'},{label:'Nebula',url:'https://nebula.sellumlabs.com'},{label:'Belleza',url:'https://bellezaadiario.com'},{label:'Compliance AI',url:'#'},{label:'Sendify',url:'#'},{label:'Uptime Pyme',url:'#'}]
   : [{label:t.kalosnap?.nav_journal||'Journal',url:'#'},{label:t.kalosnap?.nav_analysis||'Analysis',url:'#'},{label:t.kalosnap?.nav_science||'Science',url:'#'}];
 ---
 

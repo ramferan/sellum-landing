@@ -5,7 +5,7 @@
   "portfolio": { "title": "Portfolio", "label": "PROJETS 01-06", "explore": "EXPLORER" },
   "projects": [
     { "name": "KaloSnap", "desc": "Le journal alimentaire automatisé pour les personnes occupées. Enregistrez vos repas en une seconde avec une seule photo, sans suivi fastidieux.", "url": "https://kalosnap.sellumlabs.com" },
-    { "name": "Nebula", "desc": "Signaux de trading hebdomadaires propulsés par des modèles Deep Learning LSTM et l'analyse de régime macro. Plus d'information, moins de bruit.", "url": "/nebula/" },
+    { "name": "Nebula", "desc": "Signaux de trading hebdomadaires propulsés par des modèles Deep Learning LSTM et l'analyse de régime macro. Plus d'information, moins de bruit.", "url": "https://nebula.sellumlabs.com" },
     { "name": "Belleza a Diario", "desc": "Contenu de beauté organisé avec la rigueur et l'esthétique de la publication éditoriale haut de gamme.", "url": "https://bellezaadiario.com" },
     { "name": "Compliance AI", "desc": "Systèmes automatisés de supervision réglementaire conçus pour une intégration juridique sans friction.", "url": "#" },
     { "name": "Sendify", "desc": "Infrastructure de messagerie robuste conçue pour évoluer avec des fréquences de livraison élevées.", "url": "#" },
